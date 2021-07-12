@@ -101,4 +101,15 @@ Week 4: Styling, Hosting. (Working together)
   - Bass: Cleaning up
   - Greg: Testing
 
+
 Technologies:
+  Languages:
+  - Java
+  - HTML/CSS
+  - JS
+  
+  Frameworks:
+  - Spring
+  - AWS
+
+[Repository](https://github.com/Sbowles21/Capstone-Greg-Bass)
