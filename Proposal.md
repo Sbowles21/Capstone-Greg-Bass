@@ -1,107 +1,152 @@
 Project Description and Motivation:
+
 Greg and I are planning on making a website for creating pokémon and hosting them alongside pokedexes to store them in. This means that a user can create pokémon and keep track of them using their own public/private pokedex. Users will also be able to collaborate on their pokédexes through invitations sent by the creator. The reason we decided to take on this project was to build upon our first unit project regarding a pokémon database, and to add more user focused content for convient hosting of custom pokémon. Not only will this allow us to show our growth from our beginning, but this will also allow us to work on more user generated content and it's proper maintenance.
 
 Prior Art: References ([Official Pokémon Pokédex](https://www.pokemon.com/us/pokedex/), [Similar "create a pokémon Website"](https://www.smogon.com/cap/pokemon/))
+
 Our prior art is based off the offical pokémon pokédex which is used in pretty much anything Pokémon. Much like the site linked we'll have a page for viewing the pokémon and possibly the pokédex thier apart of. For the second link, Smogon, we have a similar concept by being able to create pokémon on the site, but our site will allow for more general creation than the linked one. The Smogon webiste Was made and used by professional teams instead of the public, but our will be more focused on a public use case.
 
 Core User Workflow: 
-The workflow of the user is, They begin on a landing page with a "Sign Up" and "Login" button as well has a pathway to view the top 100 public Pokémon. After the user signs in or creates an account they have an extra prompt to create a Pokémon or a Pokédex. In the Pokédex the user can decide if the Pokédex is public or private. If it is public the Pokédex will be viewable on the users profile page, otherwise it will only be viewable by the creator. In a private Pokédex the creator is able to invite other users to add Pokémon to the Pokédex. Only the creator of a Pokédex can delete the entire Pokédex, but all the Pokémon created by a user will be seen on their own page in a private tab unless they decide to make the Pokémon public.
+
+Landing Page(Bass)
+
+  - Navbar at the top with the title, signup, and log in.
+
+  - The title will lead to home from any page it's on.
+
+  - signup and login will be replaced with username and logout while logged in.
+
+  - logout will send the user back home and place signup and login back.
+
+Databases(Greg)
+
+  - A Pokémon information table(ID, Name, "Pokédex or entry number", Pokémon entry(short description), Height, Weight, Gender, Category(Breeding),  Abilities, Types, Weaknesses, and Evolutions)
+
+  - A Pokédex table(ID, Dex Name, Creator, Pokémon ID(Gotten from Pokémon table), Collaborators)
+
+  - A Users table(Username, Password, Collaborating)
+
+Sign up Log in (Bass)
+
+  - signup and login will both lead back to the home page after completion.
+Signup will automatically login the user so they do not need to login
+
+Create(Greg)
+
+  - Pokemon create Page that allows the user to input
+
+  - After Clicking "Create" the user will be taken to the Pokémons Detail Page
+
+      - Name
+
+      - Entry
+
+      - Type(From API)
+
+      - Height
+
+      - Weight
+
+      - Gender
+
+      - Category(From API)
+
+      - Abilities
+
+      - weaknesses
+
+      - evolutions
+
+      - Public / Private
+
+Pokédex Create page
+
+  - After creating the Dex the user will be taken to the Dex page where they can add Pokémon to the Dex and add Collaborators
+
+  - Users can select the name of Pokémon if the Pokémon is already created
+  otherwise, the user creates Pokémon directly in the Pokédex.
+
+  - The user is redirected to the "Create" page and when they click the create button it automatically puts the Pokémon into the Déx
+
+  - Add Collaborators via typing Username
+
+Views
+
+PokéDex(Greg)
+
+ - Users can view All Pokemon in the Déx
+
+ - View Collaborators
+
+ - View Creator
+
+ - Both the Collaborators and Creator names would be clickable and redirect to the Users page
+
+All Pokémon(Bass)
+
+  - Upvote System 
+  - A clickable button that adds the upvote amount by 1
+
+Top Pokémon(Greg)
+
+  - Top Upvoted from most to least while only showing the top 100 Pokémon at a time
+
+Pokemon detail page(Greg)
+
+User Page(Bass)
+
+  - Shows Username
+  - Dex's worked on public
+  - created public Pokémon
+  - If the person viewing is said user they can see all private as well
 
 Project Timeline: 
 
-Week 1: Landing page laid out with options that are NULL, User table, Sign Up, Login, Poké DB using AWS
+  - Week 1:
+  
+    - Landing page
+    
+    - Database setup and tables
+    
+  - Week 2:
+  
+    - Sign up/login
 
-  Monday: Project Proposal/Planning
-  
-  Tuesday: Landing Page, User table in main DB using AWS
-      
-   - Greg: Setting up AWS
-   - Bass: Landing page set up
-      
-  Wednesday: Landing Page, User table in main DB using AWS
-      
-   - Greg: Setting up AWS
-   - Bass: Landing page set up
-      
-  Thursday: Setting up Sign Up and Login, Testing and home page and sign up/login
-   
-   - Greg: Testing thoroughly
-   - Bass: Setting up
-    
-  Friday: Testing and revising home page and sign up/login
-   
-   - Greg: Testing thoroughly
-   - Bass: Revising
+    - All create views
 
-Week 2: Set up Pokémon API and begin Pokémon DB, Basic creation
+    - First API set up
 
-  Monday: Setting up API (Both)
-  
-  Tuesday: Setting up the Table and Beginning create
-    
-   - Greg: Beginning Create
-   - Bass: Setting up Table
-   
-  Wednesday: Setting up the Table and Beginning create
-  
-   - Greg: Beginning Create
-   - Bass: Setting up Table
-   
-  Thursday: Testing/Revising
-  
-   - Greg: Revising
-   - Bass: Testing
-   
-  Friday: Testing/Revising
-  
-   - Greg: Revising
-   - Bass: Testing
-    
-Week 3: All creation working and tested, user interaction developing. (Adding Profanity filter API unsure of what days)
+  - Week 3:
 
-  Monday: Testing creation
-   
-   - Greg: Testing
-   - Bass: Testing
-    
-  Tuesday: Basic "User" Page
-   - Greg: Making sure on the Pokémon it has the creator as a clickable link to lead them to their page.
-   - Bass: Making the "Default" User page
-     
-  Wednesday: More "User" Page
-   - Greg: Grabbing from the DB all the info the "User" uses
-   - Bass: Styling and laying out the detail page
-    
-  Thursday: Working on the Private/Public info
-  
-  Friday: Adding final details on the User and Landing pages
-  
-   - Greg: Landing page
-   - Bass: User Page
-    
-Week 4: Styling, Hosting. (Working together)
-  Monday: user interaction (Collaboration)
-  
-  Tuesday: Styling and studying on hosting
-  
-  Wednesday: Styling and hosting
-  
-  Thursday: hosting
-  
-  Friday: Cleaning up any issues and testing
-  
-  - Bass: Cleaning up
-  - Greg: Testing
+     - Dex Views(Greg)
 
+     - Pokémon(Greg)
+
+     - Top Pokémon(Bass)
+
+     - User(Bass)
+
+  - Week 4:
+
+    - Styling
+
+    - Bug Testing
+
+    - Revision
+
+    - Possible Hosting
 
 Technologies:
-  Languages:
-  - Java
-  - HTML/CSS
-  - JS
-  
-  Frameworks:
-  - Spring
-  - AWS
 
-[Repository](https://github.com/Sbowles21/Capstone-Greg-Bass)
+  - Languages:
+    - Java
+    - HTML/CSS
+    - JS
+  
+ -  Frameworks:
+    - Spring
+    - AWS
+
+Repository:
+
+  [Our Github Repository](https://github.com/Sbowles21/Capstone-Greg-Bass)
