@@ -1,0 +1,122 @@
+/*
+.ruby {
+  background-color: rgb(211, 10, 20);
+}
+
+
+.rich {
+  background-color:  rgb(1, 2, 3);
+}
+
+.dark-eb{
+  background-color:  rgb(83, 104, 126);
+}
+*/
+
+
+body {
+  background-color: rgb(248, 248, 248);
+}
+
+ul {
+  width: auto;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(160, 31, 37);
+}
+
+ul li {
+  display: inline;
+  color: rgb(10, 15, 25);
+}
+
+ul li a {
+  color: rgb(10, 15, 25);
+  font-size: large;
+}
+
+#navbar {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-bottom: 0px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#pages-div {
+    display: flex;
+    flex-flow: wrap;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 7%;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#pages-content-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#pages-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: rgb(207, 207, 207);
+    overflow: hidden;
+}
+
+#pages-btn {
+  width: 100%;
+  height: auto;
+  border-radius: 0px 0px 8px 8px;
+}
+
+#info {
+  display: flex;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  justify-content: space-between;
+  align-content: center;
+  background-color: rgb(160, 31, 37);
+}
+
+#copyright-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.standard-link {
+    text-decoration: none;
+}
+
+.spaced-sides {
+  padding: 0px 5px 0px 5px;
+}
+
+.light-text {
+  color: aliceblue;
+  transition: color 0.3s;
+}
+
+a.light-text:hover {
+  color: aqua;
+}
+
+.rich-text {
+  color:  rgb(1, 2, 3);
+  transition: color 0.3s;
+}
+
+a.rich-text:hover {
+  color:  rgb(83, 104, 126);
+
+}
