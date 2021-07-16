@@ -15,10 +15,13 @@ import java.util.List;
 public class MainController {
 
     @GetMapping("")
-    public String homepage(){
+    public String homepage(pokemon pokemon ){
         return "";
     }
 
     @GetMapping("/pokecreate")
-    public String pokecreate(){return "pokecreate";}
+    public String pokecreate(Model model){
+        model.addAttribute("pokemon", new pokemon());
+        return "pokecreate";
+    }
 }
