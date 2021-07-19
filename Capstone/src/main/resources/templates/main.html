@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>PokéHost</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <nav id="main-nav">
   <ul id="nav" class="navbar-nav">
-    <li><h1 class="rich-text"><img id="temp-logo" src="images/Pokehostlogo.png" alt="FanMade Pokéball" width="30" height="30">PokeHost</h1></li>
+    <li><h1 class="rich-text"><img id="temp-logo" src="Pokehostlogo.png" alt="FanMade Pokéball" width="30" height="30">PokeHost</h1></li>
     <li>
-      <a href="#" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+      <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
     </li>
     <li>
-      <a href="#" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+      <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
     </li>
   </ul>
 </nav>

@@ -14,9 +14,34 @@ import java.util.List;
 @Controller
 public class MainController {
 
+    @Autowired
+    UserRepository userRepo;
+
+    @Autowired
+    pokerepo pokerepo;
+
+
     @GetMapping("")
-    public String homepage(pokemon pokemon ){
-        return "";
+    public String homepage(pokemon pokemon){
+        return "main";
+    }
+
+    @GetMapping("/signup")
+    public String showSignUpForm(Model model) {
+        model.addAttribute("user", new User());
+
+        return "signup_form";
+    }
+
+    @PostMapping("/process_signup")
+    public String processRegister(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userRepo.save(user);
+
+        return "redirect:/";
     }
 
     @GetMapping("/pokecreate")
