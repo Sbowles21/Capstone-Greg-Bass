@@ -18,11 +18,11 @@ public class MainController {
     UserRepository userRepo;
 
     @Autowired
-    pokerepo pokerepo;
+    Pokerepo pokerepo;
 
 
     @GetMapping("")
-    public String homepage(pokemon pokemon){
+    public String homepage(){
         return "main";
     }
 
@@ -46,7 +46,7 @@ public class MainController {
 
     @GetMapping("/pokecreate")
     public String pokecreate(Model model){
-        model.addAttribute("pokemon", new pokemon());
+        model.addAttribute("pokemon", new Pokemon());
         return "pokecreate";
     }
 }
