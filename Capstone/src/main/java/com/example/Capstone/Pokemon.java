@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Pokemon")
-public class pokemon {
+public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -11,43 +11,43 @@ public class pokemon {
     @Column(nullable = false, unique = true, length = 45)
     private String Name;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column( unique = true, length = 45)
     private int DexNum;
 
     @Column(nullable = false, unique = true, length = 45)
     private  String Entry;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private int Height;
 
-    @Column(nullable = false, unique = true, length = 45)
-    private float Weight;
+    @Column(nullable = false, length = 45)
+    private int Weight;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String Gender;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String Category;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private  String Types;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private int Ability;
 
-    @Column(nullable = false, unique = true, length = 45)
-    private String Weaknessess;
+    @Column(nullable = false, length = 45)
+    private String Weaknesses;
 
     @Column(nullable = false, unique = true, length = 45)
     private String Evolutions;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private int Evo_Lvl;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(length = 45)
     private String Dexs_in;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(length = 45)
     private int Votes;
 
     public Long getId() {
@@ -90,11 +90,11 @@ public class pokemon {
         Height = height;
     }
 
-    public float getWeight() {
+    public int getWeight() {
         return Weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(int weight) {
         Weight = weight;
     }
 
@@ -130,12 +130,12 @@ public class pokemon {
         Ability = ability;
     }
 
-    public String getWeaknessess() {
-        return Weaknessess;
+    public String getWeaknesses() {
+        return Weaknesses;
     }
 
-    public void setWeaknessess(String weaknessess) {
-        Weaknessess = weaknessess;
+    public void setWeaknesses(String weaknesses) {
+        Weaknesses = weaknesses;
     }
 
     public String getEvolutions() {

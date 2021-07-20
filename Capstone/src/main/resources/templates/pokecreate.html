@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="Pokecreate.css">
   <title>PokéCreate</title>
 </head>
 <body>
-<form th:action="@{}" th:object="${}"
+<form th:action="@{/process_pokemon}" th:object="${pokemon}"
       method="post">
+  <div id = "WT">
+    <div class="m-3">
+      <div class="form-group row">
+        <label class="col-form-label">World title </label>
+        <input id = "PN" type="text" th:field="*{name}" class="form-control" required />
+      </div>
+    </div>
+  </div>
+</form>
 </body>
 </html>
