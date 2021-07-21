@@ -1,0 +1,126 @@
+:root {
+  --text-primary: rgb(4, 5, 6);
+  --red-primary: hsl(357, 77%, 36%);
+  --rich-primary: rgb(1, 2, 3);
+  --darkEB-primary: rgb(83, 104, 126);
+}
+body {
+  background-color: rgb(248, 248, 248);
+  margin: 0px;
+  padding: 0px;
+}
+textarea {
+  resize: none;
+}
+nav ul li {
+  display: inline;
+  color: rgb(10, 15, 25);
+}
+nav ul li a span {
+  color: rgb(10, 15, 25);
+  font-size: large;
+}
+#main-nav {
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+#nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--red-primary);
+}
+#temp-logo {
+  margin: 5px 0px 0px;
+}
+.navbar {
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  margin: 0px;
+  padding-left: 0px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red-primary);
+}
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+.navbar:focus-within {
+  background-color: aliceblue;
+}
+
+.navbar:focus-within .navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: var(--rich-primary);
+  text-decoration: none;
+}
+#p-name{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+
+}
+#name{
+    width: 25%;
+    height: 30px;
+}
+#p-desc{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    font-size: 49px;
+    margin-left: 60%;
+    align-items: center;
+}
+#entry{
+    width: 49%;
+    height: 48px;
+    }
+
+#box{
+        margin-top: 4%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        margin-left: 65%;
+        width: 32%;
+        border: darkgrey;
+        border-style: solid;
+        background-color: rgb(83, 104, 126);
+        color: rgb(228 112 116);
+    }
+#sec{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 8px;
+    margin-bottom: 80px;
+}
+#p-cat{
+margin-bottom:5px;
+}
