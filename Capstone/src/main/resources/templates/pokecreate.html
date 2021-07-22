@@ -18,13 +18,47 @@
   </ul>
 </nav>
 <div id="form">
-  <form th:action="@{/process_pokemon}" th:object="${pokemon}"
-        method="post">
-    <!--  Name-->
-    <div id = "p-name">
-      <label class="col-form-label">Name </label>
-      <input id = "name" type="text" th:field="*{name}" class="form-control" required/>
-    </div>
+    <form th:action="@{/process_pokemon}" th:object="${pokemon}"
+          method="post">
+        <!--  Name-->
+          <div id = "p-name">
+                <label class="col-form-label">Name </label>
+                <input id = "name" type="text" th:field="*{name}" class="form-control" required/>
+          </div>
+
+        <!-- Desc -->
+          <div id = "p-desc">
+                <label class="col-form-label">Entry </label>
+                <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}" class="form-control" required></textarea>
+          </div>
+        <div id = "box">
+            <div id="first">
+                <!--  Height-->
+                  <div id = "p-height">
+                        <label class="col-form-label">Height </label>
+                        <input id = "height" type="text" th:field="*{height}" class="form-control" required />
+                  </div>
+                <!--Weight-->
+                  <div id = "p-weight">
+                        <label class="col-form-label">Weight </label>
+                        <input id = "weight" type="text" th:field="*{weight}" class="form-control" required />
+                  </div>
+                <!--  Gender-->
+                  <div id = "p-gender">
+                      <input type="radio" id="Male" name="gender" value="Male">
+                      <label for="Male">Male</label><br>
+                      <input type="radio" id="Female" name="gender" value="Female">
+                      <label for="Female">Female</label><br>
+                      <input type="radio" id="Genderless" name="gender" value="Genderless">
+                      <label for="Genderless">Genderless</label> <br>
+                  </div>
+            </div>
+            <div id="sec">
+                <!--  Category-->
+                  <div id = "p-cat">
+                        <label class="col-form-label">Category </label>
+                        <input id = "category" type="text" th:field="*{category}" class="form-control" required />
+                  </div>
 
     <!-- Desc -->
     <div id = "p-desc">
