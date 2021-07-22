@@ -19,7 +19,7 @@ public class pokeRepoTests {
     private TestEntityManager entityManager;
 
     @Autowired
-    private Pokerepo pokerepo;
+    private pokeRepo pokerepo;
 
     @Test
     public void testCreatePokemon() {

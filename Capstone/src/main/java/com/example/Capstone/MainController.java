@@ -14,7 +14,7 @@ public class MainController {
     UserRepository userRepo;
 
     @Autowired
-    Pokerepo pokerepo;
+    pokeRepo pokerepo;
 
     @Autowired
     AbilityRepo abilityRepo;
