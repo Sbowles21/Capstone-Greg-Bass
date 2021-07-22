@@ -52,4 +52,13 @@ public class MainController {
         model.addAttribute("pokemon", new Pokemon());
         return "pokecreate";
     }
+
+    @PostMapping("/process_pokemon")
+    public String processPokemon(Pokemon pokemon) {
+
+        pokerepo.save(pokemon);
+
+        return "redirect:/";
+    }
+
 }

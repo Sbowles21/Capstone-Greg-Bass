@@ -8,46 +8,46 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false)
     private String Name;
 
-    @Column( unique = true, length = 45)
+    @Column( nullable = true)
     private int DexNum;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private  String Entry;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false)
     private int Height;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false)
     private int Weight;
 
-    @Column(nullable = false, length = 45)
-    private String Gender;
+    @Column(nullable = false)
+    private String gender;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false)
     private String Category;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false)
     private  String Types;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false)
     private int Ability;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true)
     private String Weaknesses;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = true)
     private String Evolutions;
 
-    @Column(nullable = false, length = 45)
+    @Column(nullable = true)
     private int Evo_Lvl;
 
-    @Column(length = 45)
+    @Column(nullable = true)
     private String Dexs_in;
 
-    @Column(length = 45)
+    @Column(nullable = true)
     private int Votes;
 
     public Long getId() {
@@ -99,11 +99,11 @@ public class Pokemon {
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getCategory() {
