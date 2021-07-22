@@ -8,7 +8,11 @@
 <body>
 <nav id="main-nav">
   <ul id="nav" class="navbar-nav">
-    <li><h1 class="rich-text"><img id="temp-logo" src="Pokehostlogo.png" alt="FanMade Pokéball" width="30" height="30">PokeHost</h1></li>
+    <li>
+      <h1 class="rich-text">
+        <img id="temp-logo" th:src="@{~/resources/images/Pokehostlogo.png}"
+             alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
+    </li>
     <li>
       <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
     </li>
@@ -22,12 +26,12 @@
     <ul id="pages-content" class="navbar-nav" aria-expanded="false">
       <li><a href="#" class="rich-text nav-link">Users</a></li>
       <li><a href="#" class="rich-text nav-link">Dex</a></li>
-      <li><a href="#" class="rich-text nav-link">Mon</a></li>
+      <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
     </ul>
   </nav>
-  <!-- <div class="navbar">
-      <button id="pages-btn" type="button" data-toggle="height: 50px" data-target="#pages-content" aria-expanded="false" aria-controls="pages-content">▼</button>
-  </div> -->
+<!--  <div class="navbar">-->
+<!--      <button id="pages-btn" type="button" data-toggle="height: 50px" data-target="#pages-content" aria-expanded="false" aria-controls="pages-content">▼</button>-->
+<!--  </div>-->
 </div>
 <main>
   <div id="description-div">
@@ -46,8 +50,8 @@
   </div>
 
   <div id="contact-info">
-    <a href="#" class="rich-text plain-link" target="_blank">email</a>
-    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link" target="_blank">discord</a>
+    <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
   </div>
 </div>
 </body>

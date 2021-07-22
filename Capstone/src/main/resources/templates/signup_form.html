@@ -3,36 +3,76 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Sign Up - PokéHost</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="signup.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container text-center">
+<nav id="main-nav">
+    <ul id="nav" class="navbar-nav">
+        <li>
+            <a id="title-link" href="@{/login}" class="plain-link">
+                <h1 class="rich-text">
+
+                    <img id="temp-logo" src="/images/Pokehostlogo.png"
+                         alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
+            </a>
+        </li>
+        <section id="nav-links">
+            <li class="nav-list">
+                <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+            </li>
+        </section>
+    </ul>
+</nav>
+<div id="pages-div">
+    <nav id="pages-content-div" class="navbar">
+        <ul id="pages-content" class="navbar-nav" aria-expanded="false">
+            <li><a href="#" class="rich-text nav-link">Users</a></li>
+            <li><a href="#" class="rich-text nav-link">Dex</a></li>
+            <li><a href="#" class="rich-text nav-link">Mon</a></li>
+        </ul>
+    </nav>
+    <!--  <div class="navbar">-->
+    <!--      <button id="pages-btn" type="button" data-toggle="height: 50px" data-target="#pages-content" aria-expanded="false" aria-controls="pages-content">▼</button>-->
+    <!--  </div>-->
+</div>
+<div class="form-div">
     <div>
-        <h1> User Registration - Sign Up</h1>
+        <h1 class="rich-text form-header"> User Registration - Sign Up</h1>
     </div>
     <form th:action="@{/process_signup}" th:object="${user}"
-        method="post" style="max-width: 600px; margin: 0 auto;">
-    <div class="m-3">
-        <div class="form-group row">
-            <label class="col-4 col-form-label">Username: </label>
-            <div class="col-8">
-                <input type="text" th:field="*{userName}" class="form-control">
+          method="post" class="form-style">
+        <div class="form-inputs">
+            <div class="input-field-div">
+                <label class="field-label">Username: </label>
+                <div class="input-div">
+                    <input type="text" th:field="*{userName}" class="field">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-4 col-form-label">Password: </label>
-            <div class="col-8">
-                <input type="password" th:field="*{password}" class="form-control">
+            <div class="input-field-div">
+                <label class="field-label">Password: </label>
+                <div class="input-div">
+                    <input type="password" th:field="*{password}" class="field">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="submit-btn">Sign up</button>
             </div>
         </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Sign up</button>
-        </div>
-    </div>
     </form>
 </div>
+<div id="info">
+    <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+    </div>
+
+    <div id="contact-info">
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+    </div>
+</div>
+<script src="main.js"></script>
 </body>
 </html>

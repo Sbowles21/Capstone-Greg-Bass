@@ -7,9 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
-
 @Controller
 public class MainController {
 
@@ -46,6 +43,24 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new User());
+
+        return "signup_form";
+    }
+
+    @PostMapping("/process_login")
+    public String processLogin(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userRepo.save(user);
+
+        return "redirect:/";
+    }
+
     @GetMapping("/pokecreate")
     public String pokecreate(Model model){
         model.addAttribute("abilityList", abilityRepo.findAll());
@@ -60,5 +75,4 @@ public class MainController {
 
         return "redirect:/";
     }
-
 }
