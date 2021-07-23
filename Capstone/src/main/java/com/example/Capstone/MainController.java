@@ -1,6 +1,8 @@
 package com.example.Capstone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +21,11 @@ public class MainController {
     @Autowired
     AbilityRepo abilityRepo;
 
+    @Autowired
+    dexRepo dexrepo;
 
     @GetMapping("")
-    public String homepage(){
+    public String homepage(Model model) {
         return "main";
     }
 
@@ -55,17 +59,44 @@ public class MainController {
     }
 
     @GetMapping("/pokecreate")
-    public String pokecreate(Model model){
+    public String pokecreate(Model model) {
         model.addAttribute("abilityList", abilityRepo.findAll());
         model.addAttribute("pokemon", new Pokemon());
+
+
         return "pokecreate";
     }
 
     @PostMapping("/process_pokemon")
     public String processPokemon(Pokemon pokemon) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        pokemon.setCreator(creatorId);
 
         pokerepo.save(pokemon);
 
         return "redirect:/";
     }
+
+    @GetMapping("/dexcreate")
+    public String dexcreate(Model model) {
+    model.addAttribute("dex",new Pokedex());
+    return "dexcreate";
+    }
+
+    @PostMapping("/process_dex")
+    public String processDex(Pokedex dex) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        dex.setCreator(creatorId);
+
+        dexrepo.save(dex);
+
+        return "redirect:/";
+    }
+
 }

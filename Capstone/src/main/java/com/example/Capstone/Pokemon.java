@@ -50,6 +50,9 @@ public class Pokemon {
     @Column(nullable = true)
     private int Votes;
 
+    @Column(nullable = false)
+    private Long creator;
+
     public Long getId() {
         return id;
     }
@@ -168,5 +171,13 @@ public class Pokemon {
 
     public void setVotes(int votes) {
         Votes = votes;
+    }
+
+    public Long getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Long creator) {
+        this.creator = creator;
     }
 }

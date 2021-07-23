@@ -25,12 +25,12 @@
                 <label class="col-form-label">Name </label>
                 <input id = "name" type="text" th:field="*{name}" class="form-control" required/>
           </div>
-
         <!-- Desc -->
           <div id = "p-desc">
                 <label class="col-form-label">Entry </label>
                 <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}" class="form-control" required></textarea>
           </div>
+        <!-- Box-->
         <div id = "box">
             <div id="first">
                 <!--  Height-->
@@ -41,77 +41,99 @@
                 <!--Weight-->
                   <div id = "p-weight">
                         <label class="col-form-label">Weight </label>
-                        <input id = "weight" type="text" th:field="*{weight}" class="form-control" required />
+                        <input id = "weight" type="" th:field="*{weight}" class="form-control" required />
                   </div>
                 <!--  Gender-->
                   <div id = "p-gender">
-                      <input type="radio" id="Male" name="gender" value="Male">
+                      <input type="radio" id="Male" name="gender" value="Male" required>
                       <label for="Male">Male</label><br>
-                      <input type="radio" id="Female" name="gender" value="Female">
+                      <input type="radio" id="Female" name="gender" value="Female" required>
                       <label for="Female">Female</label><br>
-                      <input type="radio" id="Genderless" name="gender" value="Genderless">
+                      <input type="radio" id="Genderless" name="gender" value="Genderless" required>
                       <label for="Genderless">Genderless</label> <br>
                   </div>
             </div>
             <div id="sec">
                 <!--  Category-->
                   <div id = "p-cat">
-                        <label class="col-form-label">Category </label>
-                        <input id = "category" type="text" th:field="*{category}" class="form-control" required />
+                      <select class="form-control" th:field="*{category}">
+                          <option value= "Egg Group"  >select Egg Group</option>
+                          <option value="Amorphous" >Amorphous</option>
+                          <option value="Bug" >Bug</option>
+                          <option value="Dragon" >Dragon</option>
+                          <option value="Fairy" >Fairy</option>
+                          <option value="Field" >Field</option>
+                          <option value="Flying" >Flying</option>
+                          <option value="Grass" >Grass</option>
+                          <option value="Human-Like" >Human-Like</option>
+                          <option value="Mineral" >Mineral</option>
+                          <option value="Monster" >Monster</option>
+                          <option value="Undiscovered" >Undiscovered</option>
+                          <option value="Water 1" >Water 1</option>
+                          <option value="Water 2" >Water 2</option>
+                          <option value="Water 3" >Water 3</option>
+                      </select>
                   </div>
-
-    <!-- Desc -->
-    <div id = "p-desc">
-      <label class="col-form-label">Entry </label>
-      <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}" class="form-control" required></textarea>
-    </div>
-    <div id = "box">
-      <div id="first">
-        <!--  Height-->
-        <div id = "p-height">
-          <label class="col-form-label">Height </label>
-          <input id = "height" type="text" th:field="*{height}" class="form-control" required />
+                <!--  Abilities-->
+                <div id = "p-abil">
+                    <select class="form-control" th:field="*{ability}">
+                        <option value= 3  >select Ability</option>
+                        <option th:each="abilities: ${abilityList}" th:value="${abilities.id}" th:text="${abilities.name}"></option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <!--Weight-->
-        <div id = "p-weight">
-          <label class="col-form-label">Weight </label>
-          <input id = "weight" type="text" th:field="*{weight}" class="form-control" required />
+        <div id="type">
+            <!-- Group1-->
+            <div id="group1">
+                <input type="checkbox" class="check" id="normal" name="types" value="Normal">
+                <label for="normal">Normal</label><br>
+                <input type="checkbox" class="check" id="fire" name="types" value="Fire">
+                <label for="fire">Fire</label><br>
+                <input type="checkbox" class="check" id="water" name="types" value="Water">
+                <label for="water">Water</label><br>
+                <input type="checkbox" class="check" id="Grass" name="types" value="Grass">
+                <label for="Grass">Grass</label><br>
+                <input type="checkbox" class="check" id=" Electric" name="types" value=" Electric">
+                <label for=" Electric"> Electric</label><br>
+                <input type="checkbox" class="check" id="Ice" name="types" value="Ice">
+                <label for="Ice">Ice</label><br>
+            </div>
+            <!-- Group2-->
+            <div id="group2">
+                <input type="checkbox" class="check" id="Fighting" name="types" value="Fighting">
+                <label for="Fighting">Fighting</label><br>
+                <input type="checkbox" class="check" id=" Poison" name="types" value=" Poison">
+                <label for=" Poison"> Poison</label><br>
+                <input type="checkbox" class="check" id="Ground" name="types" value="Ground">
+                <label for="Ground">Ground</label><br>
+                <input type="checkbox" class="check" id="Flying" name="types" value="Flying">
+                <label for="Flying">Flying</label><br>
+                <input type="checkbox" class="check" id="Psychic" name="types" value="Psychic">
+                <label for="Psychic">Psychic</label><br>
+                <input type="checkbox" class="check" id="Bug" name="types" value="Bug">
+                <label for="Bug">Bug</label><br>
+            </div>
+            <!-- Group3-->
+            <div id="group3">
+                    <input type="checkbox" class="check" id="Rock" name="types" value="Rock">
+                    <label for="Rock">Rock</label><br>
+                    <input type="checkbox" class="check" id="Ghost" name="types" value="Ghost">
+                    <label for="Ghost">Ghost</label><br>
+                    <input type="checkbox" class="check" id="Dark" name="types" value="Dark">
+                    <label for="Dark">Dark</label><br>
+                    <input type="checkbox" class="check" id="Dragon" name="types" value="Dragon">
+                    <label for="Dragon">Dragon</label><br>
+                    <input type="checkbox" class="check" id="Steel" name="types" value="Steel">
+                    <label for="Steel">Steel</label><br>
+                    <input type="checkbox" class="check" id="Fairy" name="types" value="Fairy">
+                    <label for="Fairy">Fairy</label><br>
+            </div>
         </div>
-        <!--  Gender-->
-        <div id = "p-gender">
-          <input type="radio" id="Male" name="gender" value="Male">
-          <label for="Male">Male</label><br>
-          <input type="radio" id="Female" name="gender" value="Female">
-          <label for="Female">Female</label><br>
-          <input type="radio" id="Genderless" name="gender" value="Genderless">
-          <label for="Genderless">Genderless</label> <br>
+        <div id = "submit">
+            <button type="submit" class="submit-btn">Submit</button>
         </div>
-      </div>
-      <div id="sec">
-        <!--  Category-->
-        <div id = "p-cat">
-          <label class="col-form-label">Category </label>
-          <input id = "category" type="text" th:field="*{category}" class="form-control" required />
-        </div>
-
-        <!--  Abilities-->
-        <div id = "p-abil">
-          <select class="form-control" th:field="*{ability}">
-            <option value= 3  >select Ability</option>
-            <option th:each="abilities: ${abilityList}" th:value="${abilities.id}" th:text="${abilities.name}"></option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!--  Type-->
-    <div id = "p-type">
-      <label class="col-form-label">Type</label>
-      <input id = "type" type="text" th:field="*{types}" class="form-control" required />
-    </div>
-    <div id = "submit">
-      <button type="submit" class="submit-btn">Submit</button>
-    </div>
-  </form>
+    </form>
 </div>
 <div id="info">
   <div id="copyright-info">
@@ -122,6 +144,16 @@
     <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
   </div>
 </div>
-<script src="main.js"></script>
+<script>
+var checks = document.querySelectorAll(".check");
+var max = 2;
+for (var i = 0; i < checks.length; i++)
+  checks[i].onclick = selectiveCheck;
+function selectiveCheck (event) {
+  var checkedChecks = document.querySelectorAll(".check:checked");
+  if (checkedChecks.length >= max + 1)
+    return false;
+}
+</script>
 </body>
 </html>

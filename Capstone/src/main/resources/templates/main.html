@@ -6,54 +6,50 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<nav id="main-nav">
-  <ul id="nav" class="navbar-nav">
-    <li>
-      <h1 class="rich-text">
-        <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
-             alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
-    </li>
-    <li>
-      <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
-    </li>
-    <li>
-      <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
-    </li>
-  </ul>
-</nav>
-<div id="pages-div">
-  <nav id="pages-content-div" class="navbar">
-    <ul id="pages-content" class="navbar-nav" aria-expanded="false">
-      <li><a href="#" class="rich-text nav-link">Users</a></li>
-      <li><a href="#" class="rich-text nav-link">Dex</a></li>
-      <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
+  <nav id="main-nav">
+    <ul id="nav" class="navbar-nav">
+      <li>
+        <h1 class="rich-text">
+          <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
+               alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
+      </li>
+      <li>
+        <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+      </li>
+      <li>
+        <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+      </li>
     </ul>
   </nav>
-<!--  <div class="navbar">-->
-<!--      <button id="pages-btn" type="button" data-toggle="height: 50px" data-target="#pages-content" aria-expanded="false" aria-controls="pages-content">▼</button>-->
-<!--  </div>-->
-</div>
-<main>
-  <div id="description-div">
-    <section id="About">
-      <h2 id="About-header">About</h2>
-    </section>
-    <p id="About-description">
-      Welcome to PokéHost, We are here to help you create your own Pokémon and Pokédexes. You can have public and private Pokémon and Pokédexes. So, others cannot view your private things.
-    </p>
+  <div id="pages-div">
+    <nav id="pages-content-div" class="navbar">
+      <ul id="pages-content" class="navbar-nav" aria-expanded="false">
+        <li><a th:href="@{/dexcreate}" class="rich-text nav-link">Create a Dex</a></li>
+        <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
+      </ul>
+    </nav>
   </div>
-</main>
+    <main>
+      <div id="description-div">
+        <section id="About">
+          <h2 id="About-header">About</h2>
+        </section>
+        <p id="About-description">
+          Welcome to PokéHost, We are here to help you create your own Pokémon and Pokédexes.
+          You can have public and private Pokémon and Pokédexes. So, others cannot view your private things.
+        </p>
+      </div>
+    </main>
+    <div id="info">
+      <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+      </div>
 
-<div id="info">
-  <div id="copyright-info">
-    <p class="rich-text">Pokémon is © 1995 Nintendo</p>
-  </div>
-
-  <div id="contact-info">
-    <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
-    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
-  </div>
-</div>
-</body>
-<script src="main.js"></script>
+      <div id="contact-info">
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>

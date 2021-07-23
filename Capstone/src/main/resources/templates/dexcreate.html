@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>dexCreate</title>
+    <link rel="stylesheet" href="dexcreate.css">
+</head>
+<body>
+<nav id="main-nav">
+    <ul id="nav" class="navbar-nav">
+        <li><h1 class="rich-text"><img id="temp-logo" src="Pokehostlogo.png" alt="FanMade Pokéball" width="30" height="30">PokeHost</h1></li>
+        <li>
+            <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+        </li>
+        <li>
+            <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+        </li>
+    </ul>
+</nav>
+<div id = "form">
+    <form th:action="@{/process_dex}" th:object="${dex}"
+          method="post">
+        <div id = "p-name">
+            <label class="col-form-label">Name </label>
+            <input id = "name" type="text" th:field="*{dexname}" class="form-control" required/>
+        </div>
+    </form>
+</div>
+<div id="info">
+    <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+    </div>
+    <div id="contact-info">
+        <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+    </div>
+</div>
+</body>
+</html>
