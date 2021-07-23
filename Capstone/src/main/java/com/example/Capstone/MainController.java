@@ -43,14 +43,7 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String showLoginForm(Model model) {
-        model.addAttribute("user", new User());
-
-        return "signup_form";
-    }
-
-    @PostMapping("/process_login")
+    @PostMapping("/authenticate")
     public String processLogin(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());

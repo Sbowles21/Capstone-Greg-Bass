@@ -1,7 +1,5 @@
 package com.example.Capstone;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,11 +10,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+
+    public WebSecurityConfig() {
+        super();
+    }
 
     @Autowired
     private DataSource dataSource;
@@ -40,22 +45,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/users").authenticated()
-                .anyRequest().permitAll()
+    protected void configure(final HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/pokecreate").authenticated()
+                .antMatchers("/", "/**").access("permitAll")
                 .and()
                 .formLogin()
-                    .usernameParameter("username")
-                    .defaultSuccessUrl("/")
-                    .permitAll()
+                .loginPage("/login")
+                .loginProcessingUrl("/authenticate")
+                .usernameParameter("username")
+                .defaultSuccessUrl("/")
+                .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("Main");
+        registry.addViewController("/login");
+    }
+
 
 }

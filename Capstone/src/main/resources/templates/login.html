@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - PokéHost</title>
+    <title>Login - PokéHost</title>
     <link rel="stylesheet" type="text/css" href="signup.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -11,49 +12,56 @@
 <nav id="main-nav">
     <ul id="nav" class="navbar-nav">
         <li>
-            <a id="title-link" href="@{/}" class="plain-link">
+            <a id="title-link" th:href="@{/}" class="plain-link">
                 <h1 class="rich-text">
-
-                    <img id="temp-logo" src="/images/Pokehostlogo.png"
-                         alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
+                    <img id="temp-logo" th:src="@{images/Pokehostlogo.png}"
+                         alt="Fan made pokéball" width="30" height="30">PokéHost</h1>
             </a>
         </li>
         <section id="nav-links">
             <li class="nav-list">
-                <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+                <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
             </li>
         </section>
     </ul>
 </nav>
+
 <div class="form-div">
     <div>
-        <h1 class="rich-text form-header">Sign Up</h1>
+        <h1 class="rich-text form-header">Login </h1>
     </div>
-    <form th:action="@{/process_signup}" th:object="${user}"
-          method="post" class="form-style">
+
+    <div th:if="${error}">
+        Unable to login. Check your username and password.
+    </div>
+
+        <!-- tag::thAction[] -->
+        <form method="POST" th:action="@{/authenticate}" id="loginForm">
+        <!-- end::thAction[] -->
         <div class="form-inputs">
             <div class="input-field-div">
-                <label class="field-label">Username: </label>
+                <label for="username" class="field-label">Username: </label>
                 <div class="input-div">
-                    <input type="text" th:field="*{userName}" class="field">
+                    <input type="text" name="username" id="username" /><br/>
                 </div>
             </div>
 
             <div class="input-field-div">
-                <label class="field-label">Password: </label>
+                <label for="password" class="field-label">Password: </label>
                 <div class="input-div">
-                    <input type="password" th:field="*{password}" class="field">
+                    <input type="password" name="password" id="password" /><br/>
                 </div>
             </div>
             <div>
-                <button type="submit" class="submit-btn">Sign up</button>
+
+                <input type="submit" value="Login" class="submit-btn"/>
             </div>
         </div>
     </form>
 </div>
 <div id="info">
     <div id="copyright-info">
-        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+        <p class="rich-text">Pokemon is © 1995 Nintendo</p>
     </div>
 
     <div id="contact-info">
