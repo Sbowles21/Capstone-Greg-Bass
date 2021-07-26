@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" style="overflow-y: auto">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up - PokéHost</title>
     <link rel="stylesheet" type="text/css" href="signup.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav id="main-nav">
     <ul id="nav" class="navbar-nav">
         <li>
-            <a id="title-link" href="@{/}" class="plain-link">
+            <a id="title-link" th:href="@{/}" class="plain-link">
                 <h1 class="rich-text">
 
                     <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"

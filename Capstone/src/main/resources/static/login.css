@@ -1,7 +1,7 @@
 /* root and body */
 :root {
   --text-primary: hsl(210, 20%, 2%);
-  --red-primary: hsl(357, 77%, 36%);
+  --red-primary: hsl(357, 77%, 48%);
   --rich-primary: hsl(210, 50%, 1%);
   --darkEB-primary: hsl(211, 21%, 41%);
 }
