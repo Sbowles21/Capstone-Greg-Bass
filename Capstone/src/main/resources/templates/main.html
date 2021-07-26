@@ -7,47 +7,57 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-<div sec:authorize="isAnonymous()">
-  <nav id="main-nav">
-      <ul id="nav" class="navbar-nav" >
-        <li>
-          <h1 class="rich-text">
-            <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
-                 alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
-        </li>
-        <li>
-          <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
-        </li>
-        <li>
-          <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
-        </li>
-      </ul>
+<div sec:authorize="isAnonymous()" class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand navbar-start">
+          <img th:src="@{/images/Pokehostlogo.png}" width="53">
+          <h1>PokeHost</h1>
+      </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-dark"th:href="@{/signup}">
+                Sign up
+              </a>
+              <a class="button is-dark"th:href="@{/login}">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
   </nav>
-    </div>
-    <div sec:authorize="isAuthenticated()">
-      <nav id="main-nav2">
-      <ul id="nav2" class="navbar-nav" >
-        <li>
-          <h1 class="rich-text">
-            <img id="temp-logo2" th:src="@{/images/Pokehostlogo.png}"
-                 alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
-        </li>
-        <li>
-          <a th:href="@{/logout}" class="rich-text nav-link"><span class="rich-text">Log out</span></a>
-        </li>
-      </ul>
+</div>
+<div sec:authorize="isAuthenticated()" class="main-nav">
+      <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+
+          <img th:src="@{/images/Pokehostlogo.png}" width="53">
+          <h1>PokeHost</h1>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable is-dark">
+            <a class="navbar-link">
+              Create
+            </a>
+            <div class="navbar-dropdown ">
+              <a class="navbar-link" onclick="modallever()">
+                Create a Dex
+              </a>
+              <a th:href="@{/pokecreate}" class="navbar-item">
+                Create a Pokemon
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-dark" href="#" th:href="@{/logout}">
+                Log Out
+              </a>
+            </div>
+          </div>
+        </div>
       </nav>
-    </div>
-  <div sec:authorize="isAuthenticated()">
-    <div id="pages-div" >
-      <nav id="pages-content-div" class="navbar">
-        <ul id="pages-content" class="navbar-nav" aria-expanded="false">
-          <li><button onclick="modallever()">Create a Dex</button></li>
-          <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+</div>
     <main id="main-content">
       <div id="description-div">
         <section id="About">

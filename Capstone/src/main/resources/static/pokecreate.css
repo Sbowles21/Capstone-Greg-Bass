@@ -34,6 +34,7 @@ span.rich-text:hover {
 
 body {
   background-color: rgb(243 243 243);
+  color:black;
   margin: 0px;
   padding: 0px;
 }
@@ -41,67 +42,29 @@ textarea {
   resize: none;
 }
 /*Navbar*/
-nav ul li {
-  display: inline;
-  color: rgb(10, 15, 25);
+.homenav{
+background-color: var(--red-primary) !important;
 }
-nav ul li a span {
-  color: rgb(10, 15, 25);
-  font-size: large;
+.main-nav{
+    position: sticky;
+    top: 0;
 }
-#main-nav {
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+.logo{
+margin-top:2%;
 }
-#nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: var(--red-primary);
+h1{
+    font-size: 232% !important;
+    font-weight: 400 !important;
 }
-#temp-logo {
-  margin: 5px 0px 0px;
-}
-.navbar {
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  margin: 0px;
-  padding-left: 0px;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--red-primary);
-}
-.navbar-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-}
-.navbar:focus-within {
-  background-color: aliceblue;
+#title {
+    color: inherit !important;
+    text-decoration: none;
 }
 
-.navbar:focus-within .navbar-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  color: var(--rich-primary);
-  text-decoration: none;
+#title:hover {
+    color:inherit;
+    text-decoration:none;
+    cursor:pointer;
 }
 /*Content*/
 #p-name{
