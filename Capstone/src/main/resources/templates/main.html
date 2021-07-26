@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>PokéHost</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
+<div sec:authorize="isAnonymous()">
   <nav id="main-nav">
-    <ul id="nav" class="navbar-nav">
-      <li>
-        <h1 class="rich-text">
-          <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
-               alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
-      </li>
-      <li>
-        <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
-      </li>
-      <li>
-        <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
-      </li>
-    </ul>
-  </nav>
-  <div id="pages-div">
-    <nav id="pages-content-div" class="navbar">
-      <ul id="pages-content" class="navbar-nav" aria-expanded="false">
-        <li><a th:href="@{/dexcreate}" class="rich-text nav-link">Create a Dex</a></li>
-        <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
+      <ul id="nav" class="navbar-nav" >
+        <li>
+          <h1 class="rich-text">
+            <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
+                 alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
+        </li>
+        <li>
+          <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+        </li>
+        <li>
+          <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+        </li>
       </ul>
-    </nav>
+  </nav>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+      <nav id="main-nav2">
+      <ul id="nav2" class="navbar-nav" >
+        <li>
+          <h1 class="rich-text">
+            <img id="temp-logo2" th:src="@{/images/Pokehostlogo.png}"
+                 alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
+        </li>
+        <li>
+          <a th:href="@{/logout}" class="rich-text nav-link"><span class="rich-text">Log out</span></a>
+        </li>
+      </ul>
+      </nav>
+    </div>
+  <div sec:authorize="isAuthenticated()">
+    <div id="pages-div" >
+      <nav id="pages-content-div" class="navbar">
+        <ul id="pages-content" class="navbar-nav" aria-expanded="false">
+          <li><button onclick="modallever()">Create a Dex</button></li>
+          <li><a th:href="@{/pokecreate}" class="rich-text nav-link">Create a Pokemon</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
     <main>
       <div id="description-div">
@@ -38,7 +57,7 @@
           Welcome to PokéHost, We are here to help you create your own Pokémon and Pokédexes.
           You can have public and private Pokémon and Pokédexes. So, others cannot view your private things.
         </p>
-      </div>
+  </div>
     </main>
     <div id="info">
       <div id="copyright-info">
@@ -50,6 +69,31 @@
         <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
       </div>
     </div>
+<!--  Modal-->
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Create Dex</p>
+        <button type="button" class="close" data-dismiss="modal" onclick="modallever()">
+          <span >×</span>
+        </button>
+      </header>
+      <section class="modal-card-body">
+        <form th:action="@{/process_dex}" th:object="${dex}"
+              method="post">
+          <div id = "p-name">
+            <label class="col-form-label">Name </label>
+            <input id = "name" type="text" th:field="*{dexname}" class="form-control"/>
+          </div>
+      <footer class="modal-card-foot">
+        <button type="submit" class="submit-btn button is-success">Submit</button>
+        <button type="button" class="button" data-dismiss="modal" onclick="modallever()">Close</button>
+      </footer>
+        </form>
+      </section>
+    </div>
+  </div>
     <script src="main.js"></script>
   </body>
 </html>

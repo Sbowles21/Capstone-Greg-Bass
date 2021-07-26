@@ -1,22 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="pokecreate.css">
   <title>PokéCreate</title>
 </head>
 <body>
-<nav id="main-nav">
-  <ul id="nav" class="navbar-nav">
-    <li><h1 class="rich-text"><img id="temp-logo" src="Pokehostlogo.png" alt="FanMade Pokéball" width="30" height="30">PokeHost</h1></li>
-    <li>
-      <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
-    </li>
-    <li>
-      <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
-    </li>
-  </ul>
-</nav>
+<div sec:authorize="isAnonymous()">
+    <nav id="main-nav">
+        <ul id="nav" class="navbar-nav" >
+            <li>
+                <h1 class="rich-text">
+                    <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
+                         alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
+            </li>
+            <li>
+                <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+            </li>
+            <li>
+                <a th:href="@{/login}" class="rich-text nav-link"><span class="rich-text">Login</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <nav id="main-nav2">
+        <ul id="nav2" class="navbar-nav" >
+            <li>
+                <h1 class="rich-text">
+                    <img id="temp-logo2" th:src="@{/images/Pokehostlogo.png}"
+                         alt="Fan made pokéball" width="30" height="30"/>PokeHost</h1>
+            </li>
+            <li>
+                <a th:href="@{/logout}" class="rich-text nav-link"><span class="rich-text">Log out</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
 <div id="form">
     <form th:action="@{/process_pokemon}" th:object="${pokemon}"
           method="post">
