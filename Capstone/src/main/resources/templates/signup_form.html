@@ -12,8 +12,7 @@
     <ul id="nav" class="navbar-nav">
         <li>
             <a id="title-link" th:href="@{/}" class="plain-link">
-                <h1 class="rich-text">
-
+                <h1 class="rich-text h1-header">
                     <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
                          alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
             </a>
@@ -27,7 +26,7 @@
 </nav>
 <div class="form-div">
     <div>
-        <h1 class="rich-text form-header">Sign Up</h1>
+        <h1 class="rich-text h1-header">Sign Up</h1>
     </div>
     <form th:action="@{/process_signup}" th:object="${user}"
           method="post" class="form-style">
@@ -51,7 +50,7 @@
         </div>
     </form>
 </div>
-<div id="info">
+<div class="info">
     <div id="copyright-info">
         <p class="rich-text">Pokémon is © 1995 Nintendo</p>
     </div>

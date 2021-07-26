@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      style="overflow-y: auto">
+<html xmlns:th="http://www.thymeleaf.org" style="overflow-y: auto">
 <head>
     <meta charset="UTF-8">
-    <title>Login - PokéHost</title>
-    <link rel="stylesheet" type="text/css" href="login.css" />
+    <title>Sign Up - PokéHost</title>
+    <link rel="stylesheet" type="text/css" href="signup.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 </head>
@@ -14,14 +12,14 @@
     <ul id="nav" class="navbar-nav">
         <li>
             <a id="title-link" th:href="@{/}" class="plain-link">
-                <h1 class="rich-text">
-                    <img id="temp-logo" th:src="@{images/Pokehostlogo.png}"
-                         alt="Fan made pokéball" width="30" height="30">PokéHost</h1>
+                <h1 class="rich-text h1-header">
+                    <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
+                         alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
             </a>
         </li>
         <section id="nav-links">
             <li class="nav-list">
-                <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign up</span></a>
+                <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign Up</span></a>
             </li>
         </section>
     </ul>
@@ -29,15 +27,14 @@
 
 <div class="form-div">
     <div>
-        <h1 class="rich-text form-header">Login </h1>
+        <h1 class="rich-text h1-header">Login </h1>
     </div>
 
     <div th:if="${error}">
         Unable to login. Check your username and password.
     </div>
-
-        <!-- tag::thAction[] -->
-        <form method="POST" th:action="@{/authenticate}" id="loginForm">
+    <!-- tag::thAction[] -->
+    <form method="POST" th:action="@{/authenticate}" id="loginForm">
         <!-- end::thAction[] -->
         <div class="form-inputs">
             <div class="input-field-div">
@@ -60,9 +57,9 @@
         </div>
     </form>
 </div>
-<div id="info">
+<div class="info">
     <div id="copyright-info">
-        <p class="rich-text">Pokemon is © 1995 Nintendo</p>
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
     </div>
 
     <div id="contact-info">
