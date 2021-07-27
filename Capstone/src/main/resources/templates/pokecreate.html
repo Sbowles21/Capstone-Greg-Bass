@@ -7,162 +7,179 @@
   <title>PokéCreate</title>
 </head>
 <body>
-<div sec:authorize="isAuthenticated()" class="main-nav">
-    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand navbar-start">
-            <img th:src="@{/images/Pokehostlogo.png}" width="53">
-            <a th:href="@{/}" id="title">
-                <h1>PokeHost</h1>
-            </a>
-        </div>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-dark"th:href="@{/log out}">
-                        Log Out
-                    </a>
+    <div sec:authorize="isAuthenticated()" class="main-nav">
+        <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand navbar-start">
+                <img th:src="@{/images/Pokehostlogo.png}" width="53">
+                <a th:href="@{/}" id="title">
+                    <h1>PokeHost</h1>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark"th:href="@{/log out}">
+                            Log Out
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
-<div id="form">
-    <form th:action="@{/process_pokemon}" th:object="${pokemon}"
-          method="post">
-        <!--  Name-->
-          <div id = "p-name">
-                <label class="col-form-label">Name </label>
-                <input id = "name" type="text" th:field="*{name}" class="form-control" required/>
-          </div>
-        <!-- Desc -->
-          <div id = "p-desc">
-                <label class="col-form-label">Entry </label>
-                <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}" class="form-control" required></textarea>
-          </div>
-        <!-- Box-->
-        <div id = "box">
-            <div id="first">
-                <!--  Height-->
-                  <div id = "p-height">
-                        <label class="col-form-label">Height </label>
-                        <input id = "height" type="text" th:field="*{height}" class="form-control" required />
-                  </div>
-                <!--Weight-->
-                  <div id = "p-weight">
-                        <label class="col-form-label">Weight </label>
-                        <input id = "weight" type="" th:field="*{weight}" class="form-control" required />
-                  </div>
-                <!--  Gender-->
-                  <div id = "p-gender">
-                      <input type="radio" id="Male" name="gender" value="Male" required>
-                      <label for="Male">Male</label><br>
-                      <input type="radio" id="Female" name="gender" value="Female" required>
-                      <label for="Female">Female</label><br>
-                      <input type="radio" id="Genderless" name="gender" value="Genderless" required>
-                      <label for="Genderless">Genderless</label> <br>
-                  </div>
-            </div>
-            <div id="sec">
-                <!--  Category-->
-                  <div id = "p-cat">
-                      <select class="form-control" th:field="*{category}">
-                          <option value= "Egg Group"  >select Egg Group</option>
-                          <option value="Amorphous" >Amorphous</option>
-                          <option value="Bug" >Bug</option>
-                          <option value="Dragon" >Dragon</option>
-                          <option value="Fairy" >Fairy</option>
-                          <option value="Field" >Field</option>
-                          <option value="Flying" >Flying</option>
-                          <option value="Grass" >Grass</option>
-                          <option value="Human-Like" >Human-Like</option>
-                          <option value="Mineral" >Mineral</option>
-                          <option value="Monster" >Monster</option>
-                          <option value="Undiscovered" >Undiscovered</option>
-                          <option value="Water 1" >Water 1</option>
-                          <option value="Water 2" >Water 2</option>
-                          <option value="Water 3" >Water 3</option>
-                      </select>
-                  </div>
-                <!--  Abilities-->
-                <div id = "p-abil">
-                    <select class="form-control" th:field="*{ability}">
-                        <option value= 3  >select Ability</option>
-                        <option th:each="abilities: ${abilityList}" th:value="${abilities.id}" th:text="${abilities.name}"></option>
-                    </select>
+        </nav>
+    </div>
+        <div id="maincontent" class="columns">
+            <form th:action="@{/process_pokemon}" th:object="${pokemon}"
+                      method="post">
+                    <!--  Name-->
+                <div  class="box custombox">
+                    <div id = "p-name">
+                          <label class="col-form-label">Name </label>
+                          <textarea id = "name"  data-gramm_editor="false" type="text" th:field="*{name}"
+                                     placeholder="e.g. This is where the name goes."required>
+                              </textarea>
+                      </div>
+                    <!-- Desc -->
+                      <div id = "p-desc">
+                            <label class="col-form-label">Entry </label>
+                            <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}"
+                                      placeholder="e.g. This is the Pokémon's dex entry."required>
+                            </textarea>
+                      </div>
+                    <!-- Box-->
+                    <div id = "box" class="box">
+                        <div class="columns">
+                            <div class="column">
+                                <!--  Height-->
+                                  <div id = "p-height">
+                                        <label class="col-form-label">Height </label>
+                                        <input id = "height" type="text"class="input is-small" th:field="*{height}" required />
+                                  </div>
+                                <!--Weight-->
+                                  <div id = "p-weight">
+                                        <label class="col-form-label">Weight </label>
+                                        <input id = "weight" type="text" class="input is-small"th:field="*{weight}" required />
+                                  </div>
+                                <!--  Gender-->
+                                  <div id = "p-gender">
+                                      <div class="control">
+                                          <label class="radio">
+                                              <input type="radio" name="gender" required>
+                                             Male
+                                          </label>
+                                          <label class="radio">
+                                              <input type="radio" name="gender" required>
+                                              Female
+                                          </label>
+                                          <label class="radio" >
+                                              <input type="radio" name="gender" required>
+                                              Genderless
+                                          </label>
+                                      </div>
+                                  </div>
+                            </div>
+                            <div class="column is-5 mt-5">
+                                <!--  Category-->
+                                <div id = "p-cat" class="select is-small">
+                                      <select th:field="*{category}">
+                                          <option value= "Egg Group"  >select Egg Group</option>
+                                          <option value="Amorphous" >Amorphous</option>
+                                          <option value="Bug" >Bug</option>
+                                          <option value="Dragon" >Dragon</option>
+                                          <option value="Fairy" >Fairy</option>
+                                          <option value="Field" >Field</option>
+                                          <option value="Flying" >Flying</option>
+                                          <option value="Grass" >Grass</option>
+                                          <option value="Human-Like" >Human-Like</option>
+                                          <option value="Mineral" >Mineral</option>
+                                          <option value="Monster" >Monster</option>
+                                          <option value="Undiscovered" >Undiscovered</option>
+                                          <option value="Water 1" >Water 1</option>
+                                          <option value="Water 2" >Water 2</option>
+                                          <option value="Water 3" >Water 3</option>
+                                      </select>
+                                  </div>
+                                <!--  Abilities-->
+                                <div id = "p-abil" class="select is-small">
+                                    <select th:field="*{ability}">
+                                        <option value= 3  >select Ability</option>
+                                        <option th:each="abilities: ${abilityList}" th:value="${abilities.id}" th:text="${abilities.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="type">
+                        <!-- Group1-->
+                        <div id="group1">
+                            <input type="checkbox" class="check" id="normal" name="types" value="Normal">
+                            <label for="normal">Normal</label><br>
+                            <input type="checkbox" class="check" id="fire" name="types" value="Fire">
+                            <label for="fire">Fire</label><br>
+                            <input type="checkbox" class="check" id="water" name="types" value="Water">
+                            <label for="water">Water</label><br>
+                            <input type="checkbox" class="check" id="Grass" name="types" value="Grass">
+                            <label for="Grass">Grass</label><br>
+                            <input type="checkbox" class="check" id=" Electric" name="types" value=" Electric">
+                            <label for=" Electric"> Electric</label><br>
+                            <input type="checkbox" class="check" id="Ice" name="types" value="Ice">
+                            <label for="Ice">Ice</label><br>
+                        </div>
+                        <!-- Group2-->
+                        <div id="group2">
+                            <input type="checkbox" class="check" id="Fighting" name="types" value="Fighting">
+                            <label for="Fighting">Fighting</label><br>
+                            <input type="checkbox" class="check" id=" Poison" name="types" value=" Poison">
+                            <label for=" Poison"> Poison</label><br>
+                            <input type="checkbox" class="check" id="Ground" name="types" value="Ground">
+                            <label for="Ground">Ground</label><br>
+                            <input type="checkbox" class="check" id="Flying" name="types" value="Flying">
+                            <label for="Flying">Flying</label><br>
+                            <input type="checkbox" class="check" id="Psychic" name="types" value="Psychic">
+                            <label for="Psychic">Psychic</label><br>
+                            <input type="checkbox" class="check" id="Bug" name="types" value="Bug">
+                            <label for="Bug">Bug</label><br>
+                        </div>
+                        <!-- Group3-->
+                        <div id="group3">
+                                <input type="checkbox" class="check" id="Rock" name="types" value="Rock">
+                                <label for="Rock">Rock</label><br>
+                                <input type="checkbox" class="check" id="Ghost" name="types" value="Ghost">
+                                <label for="Ghost">Ghost</label><br>
+                                <input type="checkbox" class="check" id="Dark" name="types" value="Dark">
+                                <label for="Dark">Dark</label><br>
+                                <input type="checkbox" class="check" id="Dragon" name="types" value="Dragon">
+                                <label for="Dragon">Dragon</label><br>
+                                <input type="checkbox" class="check" id="Steel" name="types" value="Steel">
+                                <label for="Steel">Steel</label><br>
+                                <input type="checkbox" class="check" id="Fairy" name="types" value="Fairy">
+                                <label for="Fairy">Fairy</label><br>
+                        </div>
+                    </div>
+                    <div id = "submit">
+                        <button type="submit" class="submit-btn is-rounded">Submit</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-        <div id="type">
-            <!-- Group1-->
-            <div id="group1">
-                <input type="checkbox" class="check" id="normal" name="types" value="Normal">
-                <label for="normal">Normal</label><br>
-                <input type="checkbox" class="check" id="fire" name="types" value="Fire">
-                <label for="fire">Fire</label><br>
-                <input type="checkbox" class="check" id="water" name="types" value="Water">
-                <label for="water">Water</label><br>
-                <input type="checkbox" class="check" id="Grass" name="types" value="Grass">
-                <label for="Grass">Grass</label><br>
-                <input type="checkbox" class="check" id=" Electric" name="types" value=" Electric">
-                <label for=" Electric"> Electric</label><br>
-                <input type="checkbox" class="check" id="Ice" name="types" value="Ice">
-                <label for="Ice">Ice</label><br>
-            </div>
-            <!-- Group2-->
-            <div id="group2">
-                <input type="checkbox" class="check" id="Fighting" name="types" value="Fighting">
-                <label for="Fighting">Fighting</label><br>
-                <input type="checkbox" class="check" id=" Poison" name="types" value=" Poison">
-                <label for=" Poison"> Poison</label><br>
-                <input type="checkbox" class="check" id="Ground" name="types" value="Ground">
-                <label for="Ground">Ground</label><br>
-                <input type="checkbox" class="check" id="Flying" name="types" value="Flying">
-                <label for="Flying">Flying</label><br>
-                <input type="checkbox" class="check" id="Psychic" name="types" value="Psychic">
-                <label for="Psychic">Psychic</label><br>
-                <input type="checkbox" class="check" id="Bug" name="types" value="Bug">
-                <label for="Bug">Bug</label><br>
-            </div>
-            <!-- Group3-->
-            <div id="group3">
-                    <input type="checkbox" class="check" id="Rock" name="types" value="Rock">
-                    <label for="Rock">Rock</label><br>
-                    <input type="checkbox" class="check" id="Ghost" name="types" value="Ghost">
-                    <label for="Ghost">Ghost</label><br>
-                    <input type="checkbox" class="check" id="Dark" name="types" value="Dark">
-                    <label for="Dark">Dark</label><br>
-                    <input type="checkbox" class="check" id="Dragon" name="types" value="Dragon">
-                    <label for="Dragon">Dragon</label><br>
-                    <input type="checkbox" class="check" id="Steel" name="types" value="Steel">
-                    <label for="Steel">Steel</label><br>
-                    <input type="checkbox" class="check" id="Fairy" name="types" value="Fairy">
-                    <label for="Fairy">Fairy</label><br>
-            </div>
-        </div>
-        <div id = "submit">
-            <button type="submit" class="submit-btn">Submit</button>
-        </div>
-    </form>
-</div>
-<div id="info">
-  <div id="copyright-info">
-    <p class="rich-text">Pokémon is © 1995 Nintendo</p>
-  </div>
-  <div id="contact-info">
-    <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
-    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
-  </div>
-</div>
-<script>
-var checks = document.querySelectorAll(".check");
-var max = 2;
-for (var i = 0; i < checks.length; i++)
-  checks[i].onclick = selectiveCheck;
-function selectiveCheck (event) {
-  var checkedChecks = document.querySelectorAll(".check:checked");
-  if (checkedChecks.length >= max + 1)
-    return false;
-}
-</script>
+    </div>
+    <div id="info">
+          <div id="copyright-info">
+            <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+          </div>
+          <div id="contact-info">
+            <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
+            <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+          </div>
+    </div>
+    <script>
+        var checks = document.querySelectorAll(".check");
+        var max = 2;
+        for (var i = 0; i < checks.length; i++)
+        checks[i].onclick = selectiveCheck;
+        function selectiveCheck (event) {
+          var checkedChecks = document.querySelectorAll(".check:checked");
+          if (checkedChecks.length >= max + 1)
+            return false;
+          }
+    </script>
 </body>
 </html>
