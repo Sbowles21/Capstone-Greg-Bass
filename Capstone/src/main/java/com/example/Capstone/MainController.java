@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -107,12 +108,21 @@ public class MainController {
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
 
-
-        dex.setCreator(creatorId);
+        User creator = userRepo.findByUserId(creatorId);
+        dex.setCreator(creator);
 
         dexrepo.save(dex);
 
         return "redirect:/";
+    }
+    @GetMapping("/dexmainview")
+    public String dexview(Model model){
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
+        List<Pokedex> dexlist = dexrepo.findAll();
+        model.addAttribute("dexlist", dexlist);
+        return "dexmainview";
     }
 
 }

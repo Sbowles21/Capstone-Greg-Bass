@@ -18,10 +18,10 @@ public class Pokemon {
     private  String Entry;
 
     @Column(nullable = false)
-    private int Height;
+    private String Height;
 
     @Column(nullable = false)
-    private int Weight;
+    private String Weight;
 
     @Column(nullable = false)
     private String gender;
@@ -85,19 +85,19 @@ public class Pokemon {
         Entry = entry;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return Height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         Height = height;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return Weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         Weight = weight;
     }
 

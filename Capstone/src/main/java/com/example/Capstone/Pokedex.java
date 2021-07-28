@@ -8,10 +8,13 @@ public class Pokedex {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String dexname;
-    @Column(nullable = false)
-    private Long creator;
+
+    @ManyToOne
+    @JoinColumn(name="creator", nullable = false)
+    private User creator;
 
     public Long getId() {
         return id;
@@ -29,11 +32,11 @@ public class Pokedex {
         this.dexname = dexname;
     }
 
-    public Long getCreator() {
+    public User getCreator() {
         return creator;
     }
 
-    public void setCreator(Long creator) {
+    public void setCreator(User creator) {
         this.creator = creator;
     }
 }

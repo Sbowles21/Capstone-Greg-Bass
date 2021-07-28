@@ -20,10 +20,15 @@ public class dexRepoTests {
 
     @Autowired
     private dexRepo dexrepo;
+
+    @Autowired
+    private UserRepository userRepo;
+
     @Test
     public void testCreatedex() {
+        User creator =  userRepo.findByUserId(8L);
         Pokedex dex = new Pokedex();
-       dex.setDexname("default");
-       dex.setCreator(1L);
+        dex.setDexname("default");
+        dex.setCreator(creator);
     }
 }
