@@ -34,14 +34,13 @@ span.rich-text:hover {
 .homenav{
 background-color: var(--red-primary) !important;
 }
-
 body {
   background: rgb(199,199,199);
   background: linear-gradient(0deg, rgba(199,199,199,1) 0%, rgba(255,255,255,1) 100%);
   color:black;
   margin: 0px;
   padding: 0px;
-   height: 100vh;
+  height: 100vh;
 }
 /*Nav*/
 .main-nav{

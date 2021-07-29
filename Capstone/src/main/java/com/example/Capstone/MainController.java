@@ -125,4 +125,15 @@ public class MainController {
         return "dexmainview";
     }
 
+    @GetMapping("/dexdetail")
+    public String dexdetail(Model model){
+
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
+        List<Pokedex> dexlist = dexrepo.findAll();
+        model.addAttribute("dexlist", dexlist);
+
+        return "dexdetail";
+    }
 }

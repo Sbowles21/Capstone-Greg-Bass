@@ -34,12 +34,17 @@
             <tr>
                 <th>Name</th>
                 <th>Creator</th>
+                <th>View</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="pokedex: ${dexlist}">
                 <td th:text="${pokedex.dexname}">Name</td>
                 <td th:text="${pokedex.creator.userName}">creator</td>
+                <td><a th:href="@{/dexdetail}">
+                    view details
+                </a>
+                </td>
             </tr>
             </tbody>
         </table>
