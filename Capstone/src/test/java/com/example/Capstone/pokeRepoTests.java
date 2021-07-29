@@ -21,8 +21,13 @@ public class pokeRepoTests {
     @Autowired
     private pokeRepo pokerepo;
 
+    @Autowired
+    private AbilityRepo abilityRepo;
+
     @Test
     public void testCreatePokemon() {
+        Abilities ability = abilityRepo.findAbilityById(11L);
+
         Pokemon poke = new Pokemon();
         poke.setName("Default");
         poke.setEntry("Default");
@@ -31,9 +36,10 @@ public class pokeRepoTests {
         poke.setGender("Male");
         poke.setCategory("Default");
         poke.setTypes("Fire");
-        poke.setAbility(1);
+        poke.setAbility(ability);
         poke.setWeaknesses("Water");
         poke.setEvolutions("Default");
+        poke.setCreator(10L);
         poke.setEvo_Lvl(0);
 
 

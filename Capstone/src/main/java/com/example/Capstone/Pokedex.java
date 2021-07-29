@@ -39,4 +39,13 @@ public class Pokedex {
     public void setCreator(User creator) {
         this.creator = creator;
     }
+
+    public Long getPokeId() {
+        return pokeId;
+    }
+
+    public void setPokeId(Long pokeId) {
+        this.pokeId = pokeId;
+    }
+
 }

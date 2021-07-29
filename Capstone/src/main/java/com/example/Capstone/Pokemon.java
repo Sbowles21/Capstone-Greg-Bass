@@ -1,5 +1,6 @@
 package com.example.Capstone;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Pokemon")
@@ -32,8 +33,9 @@ public class Pokemon {
     @Column(nullable = false)
     private  String Types;
 
-    @Column(nullable = false)
-    private int Ability;
+    @ManyToOne
+    @JoinColumn(name = "ability")
+    private Abilities Ability;
 
     @Column(nullable = true)
     private String Weaknesses;
@@ -125,11 +127,11 @@ public class Pokemon {
         Types = types;
     }
 
-    public int getAbility() {
+    public Abilities getAbility() {
         return Ability;
     }
 
-    public void setAbility(int ability) {
+    public void setAbility(Abilities ability) {
         Ability = ability;
     }
 
