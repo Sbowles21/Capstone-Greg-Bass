@@ -115,4 +115,26 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/pokemon_view")
+    public String displayPokemon(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        model.addAttribute("monlist", pokerepo.findMonByUserId(creatorId));
+
+        return "pokeView";
+    }
+
+    @GetMapping("/pokemon_detail_view")
+    public String displayPokemonDetails(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        model.addAttribute("pokemon", pokerepo.findMonById(creatorId));
+
+        return "pokeDetailView";
+    }
+
 }

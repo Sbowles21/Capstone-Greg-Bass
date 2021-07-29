@@ -18,7 +18,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-dark"th:href="@{/log out}">
+                        <a class="button is-dark" th:href="@{/log out}">
                             Log Out
                         </a>
                     </div>
@@ -34,14 +34,14 @@
                     <div id = "p-name">
                           <label class="col-form-label">Name </label>
                           <textarea id = "name"  data-gramm_editor="false" type="text" th:field="*{name}"
-                                     placeholder="e.g. This is where the name goes."required>
+                                     placeholder="e.g. This is where the name goes." required>
                               </textarea>
                       </div>
                     <!-- Desc -->
                       <div id = "p-desc">
                             <label class="col-form-label">Entry </label>
                             <textarea id = "entry" data-gramm_editor="false" type="text" th:field="*{entry}"
-                                      placeholder="e.g. This is the Pokémon's dex entry."required>
+                                      placeholder="e.g. This is the Pokémon's dex entry." required>
                             </textarea>
                       </div>
                     <!-- Box-->
@@ -51,12 +51,12 @@
                                 <!--  Height-->
                                   <div id = "p-height">
                                         <label class="col-form-label">Height </label>
-                                        <input id = "height" type="text"class="input is-small" th:field="*{height}" required />
+                                        <input id = "height" type="text" class="input is-small" th:field="*{height}" required />
                                   </div>
                                 <!--Weight-->
                                   <div id = "p-weight">
                                         <label class="col-form-label">Weight </label>
-                                        <input id = "weight" type="text" class="input is-small"th:field="*{weight}" required />
+                                        <input id = "weight" type="text" class="input is-small" th:field="*{weight}" required />
                                   </div>
                                 <!--  Gender-->
                                   <div id = "p-gender">
@@ -70,7 +70,7 @@
                                               Female
                                           </label>
                                           <label class="radio" >
-                                              <input type="radio" name="gender" required>
+                                              <input type="radio" name="gender" style="margin: 0;" required>
                                               Genderless
                                           </label>
                                       </div>

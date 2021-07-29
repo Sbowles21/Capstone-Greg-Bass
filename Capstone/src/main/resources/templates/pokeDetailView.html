@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" style="overflow-y: auto">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - PokéHost</title>
+    <link rel="stylesheet" type="text/css" href="pokeView.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()" class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+            <img src="/images/Pokehostlogo.png" width="53">
+            <a th:href="@{/}" id="title">
+                <h1>PokeHost</h1>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-dark" th:href="@{/log out}">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div id="poke-box" class="tile is-ancestor">
+    <section id="poke-section" class="tile is-parent " th:object="${pokemon}">
+        <p id="name">Name: <span th:text="${pokemon.name}"></span></p>
+        <p id="entry">Entry: <span th:text="${pokemon.entry}"></span></p>
+        <p id="height">Height: <span th:text="${pokemon.Height}"></span></p>
+        <p id="weight">Weight: <span th:text="${pokemon.Weight}"></span></p>
+        <p id="gender">gender: <span th:text="${pokemon.gender}"></span></p>
+        <p id="category">Category: <span th:text="${pokemon.Category}"></span></p>
+        <p id="types">types: <span th:text="${pokemon.types}"></span></p>
+        <p id="ability">Ability: <span th:text="${pokemon.Ability.name}"></span><span th:text="${pokemon.Ability.desc}"></span></p>
+        <p id="votes">votes: <span th:text="${pokemon.votes}"></span></p>
+    </section>
+</div>
+
+<div class="info">
+    <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+    </div>
+
+    <div id="contact-info">
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

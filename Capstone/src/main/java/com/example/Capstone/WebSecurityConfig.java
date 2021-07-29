@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/pokecreate").authenticated()
+                .antMatchers("/pokecreate", "/pokemon_view").authenticated()
                 .antMatchers("/", "/**").access("permitAll")
                 .and()
                 .formLogin()

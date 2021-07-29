@@ -25,5 +25,6 @@ public class dexRepoTests {
         Pokedex dex = new Pokedex();
        dex.setDexname("default");
        dex.setCreator(1L);
+       dex.setPokeId(1L);
     }
 }

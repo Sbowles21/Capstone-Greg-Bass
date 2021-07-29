@@ -12,6 +12,8 @@ public class Pokedex {
     private String dexname;
     @Column(nullable = false)
     private Long creator;
+    @Column
+    private Long pokeId;
 
     public Long getId() {
         return id;
@@ -36,4 +38,13 @@ public class Pokedex {
     public void setCreator(Long creator) {
         this.creator = creator;
     }
+
+    public Long getPokeId() {
+        return pokeId;
+    }
+
+    public void setPokeId(Long pokeId) {
+        this.pokeId = pokeId;
+    }
+
 }
