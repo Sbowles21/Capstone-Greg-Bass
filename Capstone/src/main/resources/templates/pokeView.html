@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up - PokéHost</title>
-    <link rel="stylesheet" type="text/css" href="pokeView.css" />
+    <link rel="stylesheet" type="text/css" href="pokeView.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 </head>
@@ -11,7 +11,7 @@
 <div sec:authorize="isAuthenticated()" class="main-nav">
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
-            <img src="/images/Pokehostlogo.png" width="53">
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
             <a th:href="@{/}" id="title">
                 <h1>PokeHost</h1>
             </a>
@@ -19,7 +19,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-dark" th:href="@{/log out}">
+                    <a class="button is-dark"th:href="@{/logout}">
                         Log Out
                     </a>
                 </div>
@@ -30,9 +30,10 @@
 
 <div id="poke-box">
     <section id="poke-section" class="box view-style" th:each="pokemon: ${monlist}">
-        <a th:href="@{/pokemon_detail_view}" id="poke-anchor">
+        <a th:href="@{/pokemon_detail_view/{id}(id=${pokemon.id})}" id="poke-anchor">
+        <img src="/images/pokehostlogo.jpeg">
         <p>Name:  <span th:text="${pokemon.name}"></span></p>
-        <p>types:  <span th:text="${pokemon.types}"></span></p>
+            <p>types:  <span th:text="${pokemon.types}"></span></p>
         </a>
     </section>
 </div>

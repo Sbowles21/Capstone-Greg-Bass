@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" style="overflow-y: auto">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" style="overflow-y: auto">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up - PokéHost</title>
@@ -8,22 +8,25 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 </head>
 <body>
-<nav id="main-nav">
-    <ul id="nav" class="navbar-nav">
-        <li>
-            <a id="title-link" th:href="@{/}" class="plain-link">
-                <h1 class="rich-text h1-header">
-                    <img id="temp-logo" th:src="@{/images/Pokehostlogo.png}"
-                         alt="Fan made pokéball" width="30" height="30">PokeHost</h1>
+<div class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
+            <a th:href="@{/}" id="title">
+                <h1>PokeHost</h1>
             </a>
-        </li>
-        <section id="nav-links">
-            <li class="nav-list">
-                <a th:href="@{/signup}" class="rich-text nav-link"><span class="rich-text">Sign Up</span></a>
-            </li>
-        </section>
-    </ul>
-</nav>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-dark"th:href="@{/signup}">
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 
 <div class="form-div">
     <div>

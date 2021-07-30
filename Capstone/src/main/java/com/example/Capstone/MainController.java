@@ -7,10 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -147,13 +144,18 @@ public class MainController {
         return "pokeView";
     }
 
-    @GetMapping("/pokemon_detail_view")
-    public String displayPokemonDetails(Model model){
+    @GetMapping("/pokemon_detail_view/{id}")
+    public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
 
-        model.addAttribute("pokemon", pokerepo.findMonById(creatorId));
+        if (id == null) {
+            model.addAttribute("pokemon", pokerepo.findMonById(creatorId));
+        }
+        else {
+            model.addAttribute("pokemon", pokerepo.findMonById(id));
+        }
 
         return "pokeDetailView";
     }

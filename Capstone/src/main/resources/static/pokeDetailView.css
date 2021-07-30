@@ -73,32 +73,13 @@ h1{
     display: flex;
 }
 
-#name {
+#poke-anchor {
+    color: hsl(210 2% 27%);
+    transition: color ease-in-out 0.25s;
 }
 
-#entry {
-}
-
-#height {
-}
-
-#weight {
-}
-
-#gender {
-}
-
-#category {
-}
-
-#types {
-}
-
-#ability {
-}
-
-#votes {
-
+#poke-anchor:hover {
+    color: hsl(229 70% 57%);
 }
 
 

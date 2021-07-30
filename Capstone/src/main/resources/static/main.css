@@ -129,12 +129,13 @@ z-index: -1;
     font-size: 1.2rem;
 }
 
-#info {
+
+.info {
   display: flex;
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-height: 2.5rem;
+  min-height: 2rem;
   justify-content: space-between;
   align-items: center;
   background-color: var(--red-primary);
