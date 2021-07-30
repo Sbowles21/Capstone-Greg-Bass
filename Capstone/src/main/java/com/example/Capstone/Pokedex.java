@@ -40,12 +40,4 @@ public class Pokedex {
         this.creator = creator;
     }
 
-    public Long getPokeId() {
-        return pokeId;
-    }
-
-    public void setPokeId(Long pokeId) {
-        this.pokeId = pokeId;
-    }
-
 }

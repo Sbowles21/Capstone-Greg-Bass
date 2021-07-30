@@ -56,7 +56,7 @@ background-color: rgb(234 234 234 / 29%) !important;
 .logo{
 margin-top:2%;
 }
-h1{
+#logotext{
     font-size: 232% !important;
     font-weight: 400 !important;
 }
@@ -69,6 +69,18 @@ h1{
     color:inherit;
     text-decoration:none;
     cursor:pointer;
+}
+#Dextitle{
+    display: flex;
+    justify-content: center;
+    font-size: 232% !important;
+    font-weight: 400 !important;
+}
+#Dexcreator{
+    display: flex;
+    justify-content: center;
+    font-size: 232% !important;
+    font-weight: 400 !important;
 }
 /*Bottom*/
 #info {
