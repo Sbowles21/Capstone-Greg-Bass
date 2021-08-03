@@ -35,6 +35,14 @@
         <p>Name:  <span th:text="${pokemon.name}"></span></p>
             <p>types:  <span th:text="${pokemon.types}"></span></p>
         </a>
+        <section id="poke-config">
+            <form action="#" th:action="@{/edit_pokemon/{id}(id=${pokemon.id})}" th:object="${pokemon}">
+                <button class="button is-info">Edit</button>
+            </form>
+            <form action="#" th:action="@{/delete_pokemon/{id}(id=${pokemon.id})}" th:object="${pokemon}">
+                <button class="button is-danger">Delete</button>
+            </form>
+        </section>
     </section>
 </div>
 

@@ -47,6 +47,7 @@ body::-webkit-scrollbar-thumb {
 /*NavBar*/
 .homenav{
 background-color: var(--red-primary) !important;
+z-index: 2;
 }
 .main-nav{
     position: sticky;
@@ -95,9 +96,10 @@ h1{
 /* Content*/
 
 #main-content {
+display: flex;
+flex-direction: column;
 position: relative;
-top 3rem;
-z-index: -1;
+top: 3rem;
 }
 
 #description-div {
@@ -129,22 +131,49 @@ z-index: -1;
     font-size: 1.2rem;
 }
 
+/* Pokemon */
 
+#poke-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#poke-anchor {
+    color: hsl(210 2% 27%);
+    transition: color ease-in-out 0.25s;
+}
+
+#poke-anchor:hover {
+    color: hsl(229 70% 57%);
+}
+
+#poke-config {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.view-style {
+    margin: 1rem 1rem 1rem 0.5rem !important;
+    width: 14rem;
+    text-align: center;
+}
+
+/*Bottom*/
 .info {
   display: flex;
   position: fixed;
   bottom: 0;
   width: 100%;
-  min-height: 2rem;
+  max-height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   background-color: var(--red-primary);
 }
-
 .spaced-sides {
   padding: 0rem 0.5rem 0rem 0.25rem;
 }
-
 .plain-link {
   text-decoration: none;
 }

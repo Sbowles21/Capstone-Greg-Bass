@@ -7,10 +7,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,6 +35,8 @@ public class MainController {
     @GetMapping("")
     public String homepage(Model model) {
         model.addAttribute("dex",new Pokedex());
+        model.addAttribute("monlist", pokerepo.findAll());
+
         return "main";
     }
 
@@ -81,16 +87,80 @@ public class MainController {
     }
 
     @PostMapping("/process_pokemon")
-    public String processPokemon(Pokemon pokemon) {
+    public String processPokemon(@Valid Pokemon pokemon, BindingResult result, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
+
+        if (result.hasErrors()) {
+            return "pokecreate";
+        }
 
         pokemon.setCreator(creatorId);
 
         pokerepo.save(pokemon);
 
-        return "redirect:/";
+        return "redirect:/pokemon_view";
+    }
+
+    @GetMapping("/edit_pokemon/{id}")
+    public String showPokeUpdateForm(@PathVariable("id") Long id, Model model) {
+        Pokemon pokemon = pokerepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid pokemon Id:" + id));
+
+        model.addAttribute("pokemon", pokemon);
+        model.addAttribute("abilityList", abilityRepo.findAll());
+        return "edit_pokemon";
+    }
+
+    @PostMapping("/edit_success/{id}")
+    public String updatePokemon(@PathVariable Long id, @Valid Pokemon pokemon,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            pokemon.setId(id);
+            return "edit_pokemon";
+        }
+
+
+
+        pokerepo.save(pokemon);
+        return "redirect:/pokemon_view";
+    }
+
+    @GetMapping("/delete_pokemon/{id}")
+    public String deleteUser(@PathVariable("id") Long id, Model model) {
+        Pokemon pokemon = pokerepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid pokemon Id:" + id));
+        pokerepo.delete(pokemon);
+        return "redirect:/pokemon_view";
+    }
+
+    @GetMapping("/pokemon_view")
+    public String displayPokemon(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        model.addAttribute("monlist", pokerepo.findMonByUserId(creatorId));
+
+        return "pokeView";
+    }
+
+    @GetMapping("/pokemon_detail_view/{id}")
+    public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model, RedirectAttributes redirAttrs){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long creatorId = customUser.getId();
+
+        if (id == null) {
+            redirAttrs.addFlashAttribute("error", "Pokémon not found!");
+            return "redirect:/pokeView";
+        }
+        else {
+            model.addAttribute("pokemon", pokerepo.findMonById(id));
+        }
+
+        return "pokeDetailView";
     }
 
     @GetMapping("/dexcreate")
@@ -132,32 +202,6 @@ public class MainController {
         model.addAttribute("dexlist", dexlist);
 
         return "dexdetail";
-    }
-    @GetMapping("/pokemon_view")
-    public String displayPokemon(Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
-        Long creatorId = customUser.getId();
-
-        model.addAttribute("monlist", pokerepo.findMonByUserId(creatorId));
-
-        return "pokeView";
-    }
-
-    @GetMapping("/pokemon_detail_view/{id}")
-    public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
-        Long creatorId = customUser.getId();
-
-        if (id == null) {
-            model.addAttribute("pokemon", pokerepo.findMonById(creatorId));
-        }
-        else {
-            model.addAttribute("pokemon", pokerepo.findMonById(id));
-        }
-
-        return "pokeDetailView";
     }
 
 }

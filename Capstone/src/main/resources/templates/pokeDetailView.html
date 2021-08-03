@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" style="overflow-y: auto">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - PokéHost</title>
+    <title>Pokémon Detail View</title>
     <link rel="stylesheet" type="text/css" th:href="@{/pokeDetailView.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -37,7 +37,7 @@
         <div class="tile is-child is-4 box">
             <p id="height">Height: <span th:text="${pokemon.Height}"></span></p>
             <p id="weight">Weight: <span th:text="${pokemon.Weight}"></span></p>
-            <p id="gender">gender: <span th:text="${pokemon.gender}"></span></p>
+            <p id="gender">Gender: <span th:text="${pokemon.gender}"></span></p>
             <p id="category">Category: <span th:text="${pokemon.Category}"></span></p>
             <p id="ability">Ability: <span th:text="${pokemon.Ability.name}"></span></p>
         </div>

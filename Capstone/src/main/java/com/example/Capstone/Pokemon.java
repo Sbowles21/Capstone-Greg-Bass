@@ -1,5 +1,6 @@
 package com.example.Capstone;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Pokemon")
@@ -9,51 +10,55 @@ public class Pokemon {
     private Long id;
 
     @Column(nullable = false)
-    private String Name;
+    @NotBlank(message = "A pokemon needs a name.")
+    String Name;
 
     @Column( nullable = true)
-    private int DexNum;
+    int DexNum;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private  String Entry;
+    @NotBlank(message = "What is a Pokémon without an entry?")
+    String Entry;
 
     @Column(nullable = false)
-    private String Height;
+    @NotBlank(message = "Please enter the height.")
+    String Height;
 
     @Column(nullable = false)
-    private String Weight;
+    @NotBlank(message = "Please enter the weight.")
+    String Weight;
 
     @Column(nullable = false)
-    private String gender;
+    String gender;
 
     @Column(nullable = false)
-    private String Category;
+    String Category;
 
     @Column(nullable = false)
-    private  String Types;
+    String Types;
 
     @ManyToOne
     @JoinColumn(name = "ability")
-    private Abilities Ability;
+    Abilities Ability;
 
     @Column(nullable = true)
-    private String Weaknesses;
+    String Weaknesses;
 
     @Column(nullable = true)
-    private String Evolutions;
+    String Evolutions;
 
     @Column(nullable = true)
-    private int Evo_Lvl;
+    int Evo_Lvl;
 
     @ManyToOne
     @JoinColumn(name="dexes", nullable = true)
-    private Pokedex dexes;
+    Pokedex dexes;
 
     @Column(nullable = true)
-    private int Votes;
+    int Votes;
 
     @Column(nullable = false)
-    private Long creator;
+    Long creator;
 
     public Long getId() {
         return id;
