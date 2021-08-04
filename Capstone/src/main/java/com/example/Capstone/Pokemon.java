@@ -1,6 +1,7 @@
 package com.example.Capstone;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Table(name = "Pokemon")
@@ -54,8 +55,8 @@ public class Pokemon {
     @JoinColumn(name="dexes", nullable = true)
     Pokedex dexes;
 
-    @Column(nullable = true)
-    int Votes;
+    @ManyToMany(mappedBy = "likedPokemon")
+    Set<User> upVotes;
 
     @Column(nullable = false)
     Long creator;
@@ -172,12 +173,12 @@ public class Pokemon {
         this.dexes = dexes;
     }
 
-    public int getVotes() {
-        return Votes;
+    public Set<User> getUpVotes() {
+        return upVotes;
     }
 
-    public void setVotes(int votes) {
-        Votes = votes;
+    public void setUpVotes(Set<User> upVotes) {
+        this.upVotes = upVotes;
     }
 
     public Long getCreator() {

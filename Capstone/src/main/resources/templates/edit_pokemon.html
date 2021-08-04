@@ -29,7 +29,6 @@
 <div id="maincontent" class="columns">
     <form action="#" th:action="@{/edit_success/{id}(id=${pokemon.id})}" th:object="${pokemon}" method="post">
         <!--  Name-->
-        <input type="hidden" th:value="${pokemon.creator}" th:field="*{creator}">
         <div  class="box custombox">
             <div id = "p-name">
                 <label class="col-form-label">Name </label>

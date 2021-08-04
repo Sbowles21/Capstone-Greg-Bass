@@ -1,6 +1,7 @@
 package com.example.Capstone;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -24,6 +25,14 @@ public class User {
 
     @Column
     private Long collabs;
+
+    @ManyToMany
+    @JoinTable (
+        name = "liked_pokemon",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "poke_id")
+    )
+    Set<Pokemon> likedPokemon;
 
     public Long getPokedex() {
         return pokedex;
@@ -72,4 +81,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Set<Pokemon> getLikedPokemon() {
+        return likedPokemon;
+    }
+
+    public void setLikedPokemon(Set<Pokemon> likedPokemon) {
+        this.likedPokemon = likedPokemon;
+    }
+
 }

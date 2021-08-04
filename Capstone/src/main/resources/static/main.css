@@ -44,6 +44,40 @@ body::-webkit-scrollbar-thumb {
   background: var(--darkEB-primary);
 } */
 
+/* Color text */
+.rich-text {
+  color: var(--rich-primary);
+  transition: color 0.3s;
+}
+
+a.rich-text:hover {
+  color:  var(--darkEB-primary);
+}
+
+span.rich-text:hover {
+  color:  var(--darkEB-primary);
+}
+
+.red-text {
+  color: var(--red-primary);
+}
+.darkEB-text {
+  color: var(--darkEB-primary);
+}
+
+
+/* Background Color */
+.rich-bg {
+  background-color: var(--rich-primary);
+}
+.red-bg {
+  background-color: var(--red-primary);
+}
+.darkEB-bg {
+  background-color: var(--darkEB-primary);
+}
+
+
 /*NavBar*/
 .homenav{
 background-color: var(--red-primary) !important;
