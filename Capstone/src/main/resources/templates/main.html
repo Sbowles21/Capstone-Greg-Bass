@@ -11,7 +11,7 @@
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <h1>PokeHost</h1>
+            <h1 class="rich-text">PokeHost</h1>
         </div>
         <div sec:authorize="!isAuthenticated()">
             <div class="navbar-end">
@@ -27,11 +27,26 @@
                 </div>
             </div>
         </div>
-        <div sec:authorize="isAuthenticated()">
-            <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable is-dark">
-                    <a class="navbar-link">
-                        Create
+    </nav>
+</div>
+<div sec:authorize="isAuthenticated()" class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
+            <h1 class="rich-text">PokeHost</h1>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable is-dark">
+                <a class="navbar-link">
+                    Create
+                </a>
+                <div class="navbar-dropdown ">
+                    <a class="navbar-link" onclick="modallever()">
+                        Create a Dex
+                    </a>
+                    <a th:href="@{/pokecreate}" class="navbar-item">
+                        Create a Pokemon
                     </a>
                     <div class="navbar-dropdown ">
                         <a class="navbar-link" onclick="modallever()">
@@ -42,12 +57,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-dark" href="#" th:href="@{/pokemon_view}">
-                            View your pokémon
-                        </a>
-                    </div>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-dark" href="#" th:href="@{/pokemon_view}">
+                        View your pokémon
+                    </a>
                 </div>
                 <div class="navbar-item">
                     <div class="buttons">

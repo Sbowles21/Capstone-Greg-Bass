@@ -115,16 +115,30 @@ public class MainController {
     }
 
     @PostMapping("/edit_success/{id}")
-    public String updatePokemon(@PathVariable Long id, @Valid Pokemon pokemon,
+    public String updatePokemon(@PathVariable Long id, @Valid Pokemon newPokemon,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
-            pokemon.setId(id);
+            newPokemon.setId(id);
             return "edit_pokemon";
         }
 
+        Optional<Pokemon> existingPokemonOptional = pokerepo.findById(newPokemon.getId());
+        if (existingPokemonOptional.isEmpty()) {
+            return "edit_pokemon";
+        }
+
+        Pokemon existingPokemon = existingPokemonOptional.get();
+        existingPokemon.setName(newPokemon.getName());
+        existingPokemon.setEntry(newPokemon.getEntry());
+        existingPokemon.setHeight(newPokemon.getHeight());
+        existingPokemon.setWeight(newPokemon.getWeight());
+        existingPokemon.setCategory(newPokemon.getCategory());
+        existingPokemon.setAbility(newPokemon.getAbility());
+        existingPokemon.setGender(newPokemon.getGender());
+        existingPokemon.setTypes(newPokemon.getTypes());
 
 
-        pokerepo.save(pokemon);
+        pokerepo.save(existingPokemon);
         return "redirect:/pokemon_view";
     }
 
