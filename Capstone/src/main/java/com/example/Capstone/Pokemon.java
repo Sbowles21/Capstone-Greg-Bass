@@ -1,6 +1,8 @@
 package com.example.Capstone;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Table(name = "Pokemon")
@@ -13,7 +15,7 @@ public class Pokemon {
     @NotBlank(message = "A pokemon needs a name.")
     String Name;
 
-    @Column( nullable = true)
+    @Column(nullable = true)
     int DexNum;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -50,9 +52,9 @@ public class Pokemon {
     @Column(nullable = true)
     int Evo_Lvl;
 
-    @ManyToOne
-    @JoinColumn(name="dexes", nullable = true)
-    Pokedex dexes;
+    @ManyToMany(mappedBy = "pokemon")
+    Set<Pokedex> dexes;
+
 
     @Column(nullable = true)
     int Votes;
@@ -164,11 +166,11 @@ public class Pokemon {
         Evo_Lvl = evo_Lvl;
     }
 
-    public Pokedex getDexes() {
+    public Set<Pokedex> getDexes() {
         return dexes;
     }
 
-    public void setDexes(Pokedex dexes) {
+    public void setDexes(Set<Pokedex> dexes) {
         this.dexes = dexes;
     }
 

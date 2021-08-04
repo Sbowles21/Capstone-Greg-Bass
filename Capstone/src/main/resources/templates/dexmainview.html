@@ -7,56 +7,94 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
+<div sec:authorize="isAnonymous()" class="main-nav">
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <a th:href="@{/}" id="title">
-                <h1>PokeHost</h1>
-            </a>
+            <h1>PokeHost</h1>
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-dark"th:href="@{/logout}">
+                    <a class="button is-dark" th:href="@{/signup}">
+                        Sign up
+                    </a>
+                    <a class="button is-dark" th:href="@{/login}">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div sec:authorize="isAuthenticated()" class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
+            <h1>PokeHost</h1>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable is-dark">
+                <a class="navbar-link">
+                    Create
+                </a>
+                <div class="navbar-dropdown ">
+                    <a class="navbar-link" onclick="modallever()">
+                        Create a Dex
+                    </a>
+                    <a th:href="@{/pokecreate}" class="navbar-item">
+                        Create a Pokemon
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-dark" href="#" th:href="@{/logout}">
                         Log Out
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-    <div>
-        <h1>All Dexes</h1>
-    </div>
+</div>
+<div>
+    <h1>All Dexes</h1>
+</div>
 
-    <div>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Creator</th>
-                <th>View</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="pokedex: ${dexlist}">
-                <td th:text="${pokedex.dexname}">Name</td>
-                <td th:text="${pokedex.creator.userName}">creator</td>
-                <td><a th:href="@{/dexdetail}">
-                    view details
-                </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Creator</th>
+            <th>View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pokedex: ${dexlist}">
+            <td th:text="${pokedex.dexname}">Name</td>
+            <td th:text="${pokedex.creator.userName}">creator</td>
+            <td><a th:href="@{/dexdetail/{id}(id=${pokedex.id})} ">
+                view details
+            </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+
+</div>
+<div id="info">
+    <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
     </div>
-    <div id="info">
-        <div id="copyright-info">
-            <p class="rich-text">Pokémon is © 1995 Nintendo</p>
-        </div>
-        <div id="contact-info">
-            <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
-            <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
-        </div>
+    <div id="contact-info">
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
     </div>
+</div>
+<script src="modal.js"></script>
 </body>
 </html>

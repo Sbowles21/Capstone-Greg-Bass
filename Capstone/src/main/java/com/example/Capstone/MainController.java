@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -77,7 +78,7 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/pokecreate")
+    @GetMapping("/poke_create")
     public String pokecreate(Model model) {
         model.addAttribute("abilityList", abilityRepo.findAll());
         model.addAttribute("pokemon", new Pokemon());
@@ -163,7 +164,7 @@ public class MainController {
         return "pokeDetailView";
     }
 
-    @GetMapping("/dexcreate")
+    @GetMapping("/dex_create")
     public String dexcreate(Model model) {
     model.addAttribute("dex",new Pokedex());
     return "dexcreate";
@@ -182,8 +183,8 @@ public class MainController {
 
         return "redirect:/";
     }
-    @GetMapping("/dexmainview")
-    public String dexview(Model model){
+    @GetMapping("/dex_mainView")
+    public String dexView(Model model){
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
 
@@ -192,8 +193,19 @@ public class MainController {
         return "dexmainview";
     }
 
-    @GetMapping("/dexdetail")
-    public String dexdetail(Model model){
+    @GetMapping("/dexdetail/{id}")
+    public String dexDetail(Model model, @PathVariable(required = false) Long id){
+
+        if(id == null){
+            return "redirect:/dex_mainview";
+        }
+        else {
+            Optional<Pokedex> pokedex = dexrepo.findById(id);
+            if(pokedex.isEmpty()){
+                return "redirect:/dex_mainview";
+            }
+            model.addAttribute("pokedex", pokedex.get());
+        }
 
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
@@ -204,4 +216,9 @@ public class MainController {
         return "dexdetail";
     }
 
+//    @PostMapping("/set_pokemon")
+//    public String setPoke(Model model){
+//
+//        return "redirect:/dexdetail";
+//    }
 }

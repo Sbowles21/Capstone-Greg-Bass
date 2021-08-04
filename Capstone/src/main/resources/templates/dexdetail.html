@@ -3,49 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <title>dexmainview</title>
-    <link rel="stylesheet" href="dexdetail.css">
+    <link rel="stylesheet" th:href="@{/dexdetail.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
-<body th:each="pokedex: ${dexlist}">
-<nav class="navbar homenav" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand navbar-start">
-        <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-        <a th:href="@{/}" id="title">
-            <h1 id = "logotext">PokeHost</h1>
-        </a>
-    </div>
-    <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="buttons">
-                <a class="button is-dark"th:href="@{/logout}">
-                    Log Out
-                </a>
+<body th:object="${pokedex}">
+<div class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
+            <h1>PokeHost</h1>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark" th:href="@{/signup}">
+                            Sign up
+                        </a>
+                        <a class="button is-dark" th:href="@{/login}">
+                            Log in
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+        <div sec:authorize="isAuthenticated()">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable is-dark">
+                    <a class="navbar-link">
+                        Create
+                    </a>
+                    <div class="navbar-dropdown ">
+                        <a class="navbar-link" onclick="modallever()">
+                            Create a Dex
+                        </a>
+                        <a th:href="@{/pokecreate}" class="navbar-item">
+                            Create a Pokemon
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark" href="#" th:href="@{/pokemon_view}">
+                            View your pokémon
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark" href="#" th:href="@{/logout}">
+                            Log Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 <div id="Dextitle">
-<h1 style="margin-right:9px;">Title: </h1>
-<h1 th:text="${pokedex.dexname}"></h1>
+    <h1 style="margin-right:9px;">Title: </h1>
+    <h1 th:text="${pokedex.dexname}"></h1>
 </div>
 <div id="Dexcreator">
     <h1 style="margin-right:9px;">Creator: </h1>
     <h1 th:text="${pokedex.creator.userName}"></h1>
 </div>
 
-<div class="tile is-ancestor">
-    <div class="tile">
-    </div>
-</div>
 
+<!--Modal-->
+<!--<div class="modal">-->
+<!--    <div class="modal-background"></div>-->
+<!--    <div class="modal-card">-->
+<!--        <header class="modal-card-head">-->
+<!--            <p class="modal-card-title">Create Dex</p>-->
+<!--            <button type="button" class="close" data-dismiss="modal" onclick="modallever()">-->
+<!--                <span >×</span>-->
+<!--            </button>-->
+<!--        </header>-->
+<!--        <section class="modal-card-body">-->
+<!--            <form th:action="@{/process_dex}" th:object="${dex}"-->
+<!--                  method="post">-->
+<!--                <div id = "p-name">-->
+<!--                    <label class="col-form-label">Pokemon Name </label>-->
+<!--                    <div id = "p-abil" class="select is-small">-->
+<!--                        <select th:field="*{poke_id}">-->
+<!--                            <option value= 3  >select Ability</option>-->
+<!--                            <option th:each="pokemon: ${monlist}" th:value="${pokemon.id}" th:text="${pokemon.name}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <footer class="modal-card-foot">-->
+<!--                    <button type="submit" class="submit-btn button is-success">Submit</button>-->
+<!--                    <button type="button" class="button" data-dismiss="modal" onclick="modallever()">Close</button>-->
+<!--                </footer>-->
+<!--            </form>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="info">
     <div id="copyright-info">
         <p class="rich-text">Pokémon is © 1995 Nintendo</p>
     </div>
     <div id="contact-info">
-        <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
         <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
     </div>
 </div>
+<script src="modal.js"></script>
 </body>
 </html>
