@@ -104,6 +104,28 @@ public class MainController {
         return "redirect:/pokemon_view";
     }
 
+    @PostMapping("/upvote_pokemon/{id}")
+    public String upvotePokemon(@PathVariable("id") Long id, @Valid User user,
+                                @Valid Pokemon pokemon, Model model, RedirectAttributes redirAttrs) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
+        Long voterId = customUser.getId();
+
+        Optional<User> existingUserOptional = userRepo.findById(user.getId());
+        if (existingUserOptional.isEmpty()) {
+            redirAttrs.addFlashAttribute("error", "Pokémon not found!");
+        }
+
+        User existingUser = existingUserOptional.get();
+
+        existingUser.setLikedPokemon(existingUser.getLikedPokemon());
+
+        userRepo.save(existingUser);
+
+        return "redirect:/pokemon_view";
+    }
+
     @GetMapping("/edit_pokemon/{id}")
     public String showPokeUpdateForm(@PathVariable("id") Long id, Model model) {
         Pokemon pokemon = pokerepo.findById(id)

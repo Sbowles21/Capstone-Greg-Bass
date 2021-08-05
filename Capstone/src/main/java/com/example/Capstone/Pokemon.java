@@ -55,11 +55,14 @@ public class Pokemon {
     @JoinColumn(name="dexes", nullable = true)
     Pokedex dexes;
 
-    @ManyToMany(mappedBy = "likedPokemon")
+    @ManyToMany(mappedBy = "likedPokemon", cascade = CascadeType.ALL)
     Set<User> upVotes;
 
     @Column(nullable = false)
     Long creator;
+
+    @Column(nullable = false)
+    String Access;
 
     public Long getId() {
         return id;
@@ -187,5 +190,13 @@ public class Pokemon {
 
     public void setCreator(Long creator) {
         this.creator = creator;
+    }
+
+    public String getAccess() {
+        return Access;
+    }
+
+    public void setAccess(String access) {
+        Access = access;
     }
 }

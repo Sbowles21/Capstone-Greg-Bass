@@ -30,5 +30,6 @@ public class dexRepoTests {
         Pokedex dex = new Pokedex();
         dex.setDexname("default");
         dex.setCreator(creator);
+        dex.setAccess("private");
     }
 }

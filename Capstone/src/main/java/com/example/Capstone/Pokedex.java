@@ -16,6 +16,9 @@ public class Pokedex {
     @JoinColumn(name="creator", nullable = false)
     private User creator;
 
+    @Column
+    String access;
+
     public Long getId() {
         return id;
     }
@@ -40,4 +43,11 @@ public class Pokedex {
         this.creator = creator;
     }
 
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
+    }
 }

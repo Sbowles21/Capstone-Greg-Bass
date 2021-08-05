@@ -161,6 +161,12 @@ background-color: white;
 #group2{
     margin-right: 1%;
 }
+
+#access-radio {
+    display: flex;
+    justify-content: center;
+}
+
 /*Submit Button*/
 #submit{
             margin: 1% 0% 5% 30.5%;
