@@ -25,6 +25,8 @@ public class Pokedex {
             inverseJoinColumns = @JoinColumn(name = "poke_id")
     )
     Set<Pokemon> pokemon;
+    @Column
+    String access;
 
     public Long getId() {
         return id;
@@ -56,5 +58,11 @@ public class Pokedex {
 
     public void setpokemon(Set<Pokemon> pokemon) {
         this.pokemon = pokemon;
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
     }
 }

@@ -19,7 +19,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-dark"th:href="@{/login}">
+                    <a class="button is-dark" th:href="@{/login}">
                         Log In
                     </a>
                 </div>
@@ -38,14 +38,14 @@
             <div class="input-field-div">
                 <label class="field-label">Username: </label>
                 <div class="input-div">
-                    <input type="text" th:field="*{userName}" class="field">
+                    <input type="text" th:field="*{userName}" class="field" required>
                 </div>
             </div>
 
             <div class="input-field-div">
                 <label class="field-label">Password: </label>
                 <div class="input-div">
-                    <input type="password" th:field="*{password}" class="field">
+                    <input type="password" th:field="*{password}" class="field" required>
                 </div>
             </div>
             <div>

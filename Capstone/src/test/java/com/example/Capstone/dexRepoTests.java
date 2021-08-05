@@ -52,5 +52,6 @@ public class dexRepoTests {
         dex.setpokemon(pokeman);
 
 
+        dex.setAccess("private");
     }
 }

@@ -18,7 +18,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-dark"th:href="@{/logout}">
+                        <a class="button is-dark" th:href="@{/logout}">
                             Log Out
                         </a>
                     </div>
@@ -153,6 +153,16 @@
                                 <input type="checkbox" class="check" id="Fairy" name="types" value="Fairy">
                                 <label for="Fairy">Fairy</label><br>
                         </div>
+                    </div>
+                    <div class="control" id="access-radio">
+                        <label class="radio spaced-sides">
+                            <input type="radio" name="access" value="public" th:field="*{access}" required checked>
+                            public
+                        </label>
+                        <label class="radio spaced-sides">
+                            <input type="radio" name="access" value="private" th:field="*{access}" required>
+                            private
+                        </label>
                     </div>
                     <div id = "submit">
                         <button type="submit" class="submit-btn is-rounded">Submit</button>

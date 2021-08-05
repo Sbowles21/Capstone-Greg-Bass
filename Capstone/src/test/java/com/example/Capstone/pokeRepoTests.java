@@ -41,6 +41,7 @@ public class pokeRepoTests {
         poke.setEvolutions("Default");
         poke.setCreator(10L);
         poke.setEvo_Lvl(0);
+        poke.setAccess("public");
 
 
         Pokemon savedPokemon = pokerepo.save(poke);
