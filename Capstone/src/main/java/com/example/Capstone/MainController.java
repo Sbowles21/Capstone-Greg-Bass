@@ -35,7 +35,7 @@ public class MainController {
 
     @GetMapping("")
     public String homepage(Model model) {
-        model.addAttribute("dex",new Pokedex());
+        model.addAttribute("dex", new Pokedex());
         model.addAttribute("monlist", pokerepo.findAll());
 
         return "main";
@@ -69,10 +69,11 @@ public class MainController {
 
         return "redirect:/";
     }
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/";
@@ -116,7 +117,7 @@ public class MainController {
 
     @PostMapping("/edit_success/{id}")
     public String updatePokemon(@PathVariable Long id, @Valid Pokemon newPokemon,
-                             BindingResult result, Model model) {
+                                BindingResult result, Model model) {
         if (result.hasErrors()) {
             newPokemon.setId(id);
             return "edit_pokemon";
@@ -151,7 +152,7 @@ public class MainController {
     }
 
     @GetMapping("/pokemon_view")
-    public String displayPokemon(Model model){
+    public String displayPokemon(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
@@ -162,7 +163,7 @@ public class MainController {
     }
 
     @GetMapping("/pokemon_detail_view/{id}")
-    public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model, RedirectAttributes redirAttrs){
+    public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model, RedirectAttributes redirAttrs) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
@@ -170,8 +171,7 @@ public class MainController {
         if (id == null) {
             redirAttrs.addFlashAttribute("error", "Pokémon not found!");
             return "redirect:/pokeView";
-        }
-        else {
+        } else {
             model.addAttribute("pokemon", pokerepo.findMonById(id));
         }
 
@@ -180,8 +180,8 @@ public class MainController {
 
     @GetMapping("/dex_create")
     public String dexcreate(Model model) {
-    model.addAttribute("dex",new Pokedex());
-    return "dexcreate";
+        model.addAttribute("dex", new Pokedex());
+        return "dexcreate";
     }
 
     @PostMapping("/process_dex")
@@ -197,8 +197,9 @@ public class MainController {
 
         return "redirect:/";
     }
+
     @GetMapping("/dex_mainView")
-    public String dexView(Model model){
+    public String dexView(Model model) {
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
 
@@ -208,14 +209,13 @@ public class MainController {
     }
 
     @GetMapping("/dexdetail/{id}")
-    public String dexDetail(Model model, @PathVariable(required = false) Long id){
+    public String dexDetail(Model model, @PathVariable(required = false) Long id) {
 
-        if(id == null){
+        if (id == null) {
             return "redirect:/dex_mainview";
-        }
-        else {
+        } else {
             Optional<Pokedex> pokedex = dexrepo.findById(id);
-            if(pokedex.isEmpty()){
+            if (pokedex.isEmpty()) {
                 return "redirect:/dex_mainview";
             }
             model.addAttribute("pokedex", pokedex.get());
@@ -230,9 +230,34 @@ public class MainController {
         return "dexdetail";
     }
 
-//    @PostMapping("/set_pokemon")
-//    public String setPoke(Model model){
-//
-//        return "redirect:/dexdetail";
-//    }
+    @GetMapping("/pokeSelect/{id}")
+    public String pokeSelect(Model model, @PathVariable(required = false) Long id) {
+        Pokedex pokedex = dexrepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Pokedex: " + id));
+        model.addAttribute("monlist", pokerepo.findAll());
+        model.addAttribute("pokedex", pokedex);
+        return "pokeSelect";
+    }
+
+    @PostMapping("/process_adding")
+    public String process_adding(@PathVariable Long id,@Valid Pokedex dex,
+                                 BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            dex.setId(id);
+            return "pokeSelect";
+        }
+
+        Optional<Pokedex> existingPokedexOptional = dexrepo.findById(dex.getId());
+        if (existingPokedexOptional.isEmpty()) {
+            return "pokeSelect";
+        }
+
+
+        Pokedex existingPokedex = existingPokedexOptional.get();
+        existingPokedex.setpokemon(existingPokedex.getpokemon());
+
+
+        dexrepo.save(existingPokedex);
+        return "redirect:/dexdetail";
+    }
 }
