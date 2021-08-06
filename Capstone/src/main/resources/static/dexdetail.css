@@ -6,7 +6,7 @@
 }
 /* Color text */
 .rich-text {
-  color: var(--rich-primary);
+  color: var(--rich-primary); !important
   transition: color 0.3s;
 }
 a.rich-text:hover {
@@ -79,6 +79,10 @@ margin-top:2%;
 #Dexcreator{
     display: flex;
     justify-content: center;
+    font-size: 232% !important;
+    font-weight: 400 !important;
+}
+#Appname{
     font-size: 232% !important;
     font-weight: 400 !important;
 }

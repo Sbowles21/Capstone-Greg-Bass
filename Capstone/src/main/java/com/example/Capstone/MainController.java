@@ -266,6 +266,9 @@ public class MainController {
 
         List<Pokedex> dexlist = dexrepo.findAll();
         model.addAttribute("dexlist", dexlist);
+
+        model.addAttribute("dex", new Pokedex());
+
         return "dexmainview";
     }
 
@@ -300,25 +303,28 @@ public class MainController {
         return "pokeSelect";
     }
 
-    @PostMapping("/process_adding")
-    public String process_adding(@PathVariable Long id,@Valid Pokedex dex,
-                                 BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            dex.setId(id);
-            return "pokeSelect";
+
+
+    @PostMapping("/process_adding/{id}")
+    public String process_adding(@PathVariable Long id,@Valid Pokedex dex, Model model ) {
+
+        System.out.print("YEET");
+        for (var poke: dex.pokemonSet){
+            System.out.println(poke.getId());
         }
 
         Optional<Pokedex> existingPokedexOptional = dexrepo.findById(dex.getId());
         if (existingPokedexOptional.isEmpty()) {
-            return "pokeSelect";
+            return "poke_select";
         }
 
-
         Pokedex existingPokedex = existingPokedexOptional.get();
-        existingPokedex.setpokemon(existingPokedex.getpokemon());
+        existingPokedex.setPokemonSet(existingPokedex.pokemonSet);
 
 
+        System.out.print(dex.pokemonSet);
+        System.out.println(existingPokedex);
         dexrepo.save(existingPokedex);
-        return "redirect:/dexdetail";
+        return "redirect:/dex_main_view";
     }
 }

@@ -7,49 +7,63 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-<div sec:authorize="isAnonymous()" class="main-nav">
+<div class="main-nav">
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
             <h1>PokeHost</h1>
         </div>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-dark" th:href="@{/signup}">
-                        Sign up
-                    </a>
-                    <a class="button is-dark" th:href="@{/login}">
-                        Log in
-                    </a>
+        <div sec:authorize="!isAuthenticated()">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark" th:href="@{/signup}">
+                            Sign up
+                        </a>
+                        <a class="button is-dark" th:href="@{/login}">
+                            Log in
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-</div>
-<div sec:authorize="isAuthenticated()" class="main-nav">
-    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand navbar-start">
-
-            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <h1>PokeHost</h1>
-        </div>
-        <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable is-dark">
-                <a class="navbar-link">
-                    Create
-                </a>
-                <div class="navbar-dropdown ">
-                    <a th:href="@{/poke_create}" class="navbar-item">
-                        Create a Pokemon
+        <div sec:authorize="isAuthenticated()">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable is-dark">
+                    <a class="navbar-link">
+                        Create
                     </a>
+                    <div class="navbar-dropdown ">
+                        <a class="navbar-link" onclick="modallever()">
+                            Create a Dex
+                        </a>
+                        <a th:href="@{/poke_create}" class="navbar-item">
+                            Create a Pokemon
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-dark" href="#" th:href="@{/logout}">
-                        Log Out
+                <div class="navbar-item has-dropdown is-hoverable is-dark">
+                    <a class="navbar-link rich-text">
+                        View
                     </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" th:href="@{/users}">
+                            Users
+                        </a>
+                        <a class="navbar-item" th:href="@{/dex_main_view}">
+                            View all Pokédex
+                        </a>
+                        <a class="navbar-item" th:href="@{/pokemon_view}">
+                            View your Pokémon
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-dark" href="#" th:href="@{/logout}">
+                            Log Out
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,6 +95,33 @@
     </table>
 </div>
 <div>
+
+<!--    Modal-->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Create Dex</p>
+                <button type="button" class="close" data-dismiss="modal" onclick="modallever()">
+                    <span>×</span>
+                </button>
+            </header>
+            <section class="modal-card-body">
+                <form th:action="@{/process_dex}" th:object="${dex}"
+                      method="post">
+                    <div id="p-name">
+                        <label class="col-form-label">Name </label>
+                        <input id="name" type="text" th:field="*{dexname}" class="form-control"/>
+                    </div>
+                    <footer class="modal-card-foot">
+                        <button type="submit" class="submit-btn button is-success">Submit</button>
+                        <button type="button" class="button" data-dismiss="modal" onclick="modallever()">Close</button>
+                    </footer>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
 
 </div>
 <div id="info">

@@ -11,7 +11,7 @@
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <h1>PokeHost</h1>
+            <h1 id="Appname">PokeHost</h1>
         </div>
         <div sec:authorize="!isAuthenticated()">
             <div class="navbar-end">
@@ -29,26 +29,6 @@
         </div>
         <div sec:authorize="isAuthenticated()">
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable is-dark">
-                    <a class="navbar-link">
-                        Create
-                    </a>
-                    <div class="navbar-dropdown ">
-                        <a class="navbar-link" onclick="modallever()">
-                            Create a Dex
-                        </a>
-                        <a th:href="@{/pokecreate}" class="navbar-item">
-                            Create a Pokemon
-                        </a>
-                    </div>
-                </div>
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-dark" href="#" th:href="@{/pokemon_view}">
-                            View your pokémon
-                        </a>
-                    </div>
-                </div>
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-dark" href="#" th:href="@{/logout}">
@@ -69,8 +49,15 @@
     <h1 th:text="${pokedex.creator.userName}"></h1>
 </div>
 
-
-
+<div id="poke-box">
+    <section id="poke-section" class="box view-style" th:each="pokemon: ${monlist}">
+        <a th:href="@{/pokemon_detail_view/{id}(id=${pokemon.id})}" id="poke-anchor">
+            <img src="/images/pokehostlogo.jpeg">
+            <p>Name:  <span th:text="${pokemon.name}"></span></p>
+            <p>types:  <span th:text="${pokemon.types}"></span></p>
+        </a>
+    </section>
+</div>
 <div id="info">
     <div id="copyright-info">
         <p class="rich-text">Pokémon is © 1995 Nintendo</p>
@@ -80,6 +67,5 @@
         <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
     </div>
 </div>
-<script src="modal.js"></script>
 </body>
 </html>

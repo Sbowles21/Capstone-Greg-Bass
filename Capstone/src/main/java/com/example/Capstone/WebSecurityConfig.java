@@ -61,8 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                         "/pokemon_view",
                         "/pokemon_detail_view/{id}",
                         "/dexdetail",
-                        "/dexmainview/{id}",
-                        "/edit_pokemon/{id}"
+                        "/dex_main_view/{id}",
+                        "/edit_pokemon/{id}",
+                        "/poke_select/{id}"
                         ).authenticated()
                 .antMatchers("/", "/**").access("permitAll")
                 .and()

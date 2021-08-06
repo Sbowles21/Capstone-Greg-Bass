@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb {
 
 /* Color text */
 .rich-text {
-  color: var(--rich-primary);
+  color: var(--rich-primary) !important;
   transition: color 0.3s;
 }
 

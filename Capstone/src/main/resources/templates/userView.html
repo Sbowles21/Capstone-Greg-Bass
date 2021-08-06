@@ -16,6 +16,22 @@
                 <h1>PokeHost</h1>
             </a>
         </div>
+        <div class="navbar-item has-dropdown is-hoverable is-dark">
+            <a class="navbar-link rich-text">
+                View
+            </a>
+            <div class="navbar-dropdown">
+                <a class="navbar-item" th:href="@{/users}">
+                    Users
+                </a>
+                <a class="navbar-item" th:href="@{/dex_main_view}">
+                    View all Pokédex
+                </a>
+                <a class="navbar-item" th:href="@{/pokemon_view}">
+                    View your Pokémon
+                </a>
+            </div>
+        </div>
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
