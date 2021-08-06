@@ -1,6 +1,7 @@
 package com.example.Capstone;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -32,7 +33,7 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "poke_id")
     )
-    Set<Pokemon> likedPokemon;
+    Set<Pokemon> likedPokemon = new HashSet<>();
 
     public Long getPokedex() {
         return pokedex;

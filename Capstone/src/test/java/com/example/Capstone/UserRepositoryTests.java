@@ -31,10 +31,10 @@ public class UserRepositoryTests {
     public void testCreateUser() {
         Set<Pokemon> poke_Set = new HashSet<>();
 
-        Pokemon pokemon1 = pokeRepo.findMonById(1L);
+        Pokemon pokemon1 = pokeRepo.findMonById(9L);
         Pokemon pokemon2 = pokeRepo.findMonById(2L);
         Pokemon pokemon3 = pokeRepo.findMonById(8L);
-        Pokemon pokemon4 = pokeRepo.findMonById(4L);
+        Pokemon pokemon4 = pokeRepo.findMonById(11L);
 
         poke_Set.add(pokemon1);
         poke_Set.add(pokemon2);

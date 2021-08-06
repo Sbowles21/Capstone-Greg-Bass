@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +78,13 @@ public class MainController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/users")
+    public String users(Model model) {
+        model.addAttribute("userlist", userRepo.findAll());
+
+        return "userView";
     }
 
     @GetMapping("/poke_create")
@@ -184,6 +192,37 @@ public class MainController {
         return "pokeView";
     }
 
+    @GetMapping("/hey-bass")
+    public String heyBass(){
+        return "hey-bass";
+    }
+
+
+    class A {
+        public A() {
+            names = new ArrayList<>();
+        }
+        ArrayList<String> names;
+
+        public ArrayList<String> getNames() {
+            return names;
+        }
+
+        public void setNames(ArrayList<String> names) {
+            this.names = names;
+        }
+    }
+
+    @PostMapping("/hey-bass")
+    public  String heyBass(A a){
+
+        System.out.println("hey-bass");
+        for (var name : a.names) {
+            System.out.println(name);
+        }
+        return "hey-bass";
+    }
+
     @GetMapping("/pokemon_detail_view/{id}")
     public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model, RedirectAttributes redirAttrs) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -220,7 +259,7 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/dex_mainView")
+    @GetMapping("/dex_main_view")
     public String dexView(Model model) {
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
@@ -230,7 +269,7 @@ public class MainController {
         return "dexmainview";
     }
 
-    @GetMapping("/dexdetail/{id}")
+    @GetMapping("/dex_detail/{id}")
     public String dexDetail(Model model, @PathVariable(required = false) Long id) {
 
         if (id == null) {
@@ -252,7 +291,7 @@ public class MainController {
         return "dexdetail";
     }
 
-    @GetMapping("/pokeSelect/{id}")
+    @GetMapping("/poke_select/{id}")
     public String pokeSelect(Model model, @PathVariable(required = false) Long id) {
         Pokedex pokedex = dexrepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid Pokedex: " + id));

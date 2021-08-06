@@ -54,6 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         http
                 .authorizeRequests()
                 .antMatchers(
+                       "/hey-bass"
+                ).permitAll()
+                .antMatchers(
                         "/pokecreate",
                         "/pokemon_view",
                         "/pokemon_detail_view/{id}",

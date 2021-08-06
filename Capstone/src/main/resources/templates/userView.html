@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" style="overflow-y: auto">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - PokéHost</title>
+    <link rel="stylesheet" type="text/css" th:href="userView.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()" class="main-nav">
+    <nav class="navbar homenav" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand navbar-start">
+            <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
+            <a th:href="@{/}" id="title">
+                <h1>PokeHost</h1>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-dark" th:href="@{/logout}">
+                        Log Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="table-container">
+    <table class="table is-bordered is-hoverable is-fullwidth" id="user-table">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>mon</th>
+            <th>dex</th>
+        </tr>
+        </thead>
+        <tbody th:each="user: ${userlist}">
+        <tr>
+            <td th:text="${user.userName}"></td>
+            <td><a th:href="@{/pokemon_view}">mon</a></td>
+            <td><a th:href="@{/dex_mainView}">dex</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="info">
+    <div id="copyright-info">
+        <p class="rich-text">Pokémon is © 1995 Nintendo</p>
+    </div>
+
+    <div id="contact-info">
+        <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+        <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+    </div>
+</div>
+</body>
+</html>

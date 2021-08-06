@@ -52,7 +52,7 @@ public class Pokemon {
     @Column(nullable = true)
     int Evo_Lvl;
 
-    @ManyToMany(mappedBy = "pokemon")
+    @ManyToMany(mappedBy = "pokemon", cascade = CascadeType.ALL)
     Set<Pokedex> dexes;
 
 

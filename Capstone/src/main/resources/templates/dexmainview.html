@@ -72,7 +72,7 @@
         <tr th:each="pokedex: ${dexlist}">
             <td th:text="${pokedex.dexname}">Name</td>
             <td th:text="${pokedex.creator.userName}">creator</td>
-            <td><a th:href="@{/dexdetail/{id}(id=${pokedex.id})} ">
+            <td><a th:href="@{/dex_detail/{id}(id=${pokedex.id})} ">
                 view details
             </a>
             </td>

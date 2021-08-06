@@ -58,6 +58,8 @@ public class Pokedex {
 
     public void setpokemon(Set<Pokemon> pokemon) {
         this.pokemon = pokemon;
+    }
+
     public String getAccess() {
         return access;
     }
