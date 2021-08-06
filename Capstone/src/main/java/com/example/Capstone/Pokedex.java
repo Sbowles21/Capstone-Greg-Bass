@@ -19,9 +19,13 @@ public class Pokedex {
     @JoinColumn(name = "creator", nullable = false)
     private User creator;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", nullable = true)
-    private Pokemon pokemon;
+    @ManyToMany
+    @JoinTable(
+            name = "dexes_in",
+            joinColumns = @JoinColumn(name = "dex_id"),
+            inverseJoinColumns = @JoinColumn(name = "poke_id")
+    )
+    Set<Pokemon> pokemonSet = new HashSet<>();
 
     @Column
     String access;
@@ -50,14 +54,13 @@ public class Pokedex {
         this.creator = creator;
     }
 
-    public Pokemon getPokemon() {
-        return pokemon;
+    public Set<Pokemon> getpokemon() {
+        return pokemonSet;
     }
 
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
+    public void setpokemon(Set<Pokemon> pokemon) {
+        this.pokemonSet = pokemon;
     }
-
     public String getAccess() {
         return access;
     }
@@ -65,5 +68,16 @@ public class Pokedex {
     public void setAccess(String access) {
         this.access = access;
     }
+    public void addpokemon(Pokemon pokemon) {
+        this.pokemonSet.add(pokemon);
 
+    }
+
+    public Set<Pokemon> getPokemonSet() {
+        return pokemonSet;
+    }
+
+    public void setPokemonSet(Set<Pokemon> pokemonSet) {
+        this.pokemonSet = pokemonSet;
+    }
 }

@@ -52,8 +52,8 @@ public class Pokemon {
     @Column(nullable = true)
     int Evo_Lvl;
 
-    @OneToMany(mappedBy = "pokemonSet",cascade = CascadeType.ALL)
-    private Set pokemon;
+    @ManyToMany(mappedBy = "pokemonSet",cascade = CascadeType.ALL)
+    Set<Pokedex> dexes;
 
 
     @ManyToMany(mappedBy = "likedPokemon", cascade = CascadeType.ALL)
@@ -169,12 +169,12 @@ public class Pokemon {
         Evo_Lvl = evo_Lvl;
     }
 
-    public Set getPokemon() {
-        return pokemon;
+    public Set<Pokedex> getDexes() {
+        return dexes;
     }
 
-    public void setPokemon(Set pokemon) {
-        this.pokemon = pokemon;
+    public void setDexes(Set<Pokedex> dexes) {
+        this.dexes = dexes;
     }
 
     public Set<User> getUpVotes() {

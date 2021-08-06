@@ -15,9 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -306,24 +304,25 @@ public class MainController {
 
 
     @PostMapping("/process_adding/{id}")
-    public String process_adding(@PathVariable Long id,@Valid Pokedex dex, Model model ) {
-
-        System.out.print("YEET");
-        for (var poke: dex.pokemonSet){
-            System.out.println(poke.getId());
-        }
-
-        Optional<Pokedex> existingPokedexOptional = dexrepo.findById(dex.getId());
+    public String process_adding( Model model,@Valid Pokedex pokedex) {
+        Optional<Pokedex> existingPokedexOptional = dexrepo.findById(pokedex.getId());
         if (existingPokedexOptional.isEmpty()) {
-            return "poke_select";
+            return "dex_main_view";
         }
 
-        Pokedex existingPokedex = existingPokedexOptional.get();
-        existingPokedex.setPokemonSet(existingPokedex.pokemonSet);
+        Set<Pokemon> pokemon = new HashSet<>();
 
 
-        System.out.print(dex.pokemonSet);
-        System.out.println(existingPokedex);
+        for (var poke : pokedex.pokemonSet) {
+            System.out.println(poke);
+            pokemon.add(poke);
+        }
+
+        Pokedex existingPokedex= existingPokedexOptional.get();
+        existingPokedex.setPokemonSet(pokemon);
+
+
+        System.out.println(pokemon);
         dexrepo.save(existingPokedex);
         return "redirect:/dex_main_view";
     }
