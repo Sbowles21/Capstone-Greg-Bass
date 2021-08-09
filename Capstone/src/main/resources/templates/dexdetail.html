@@ -67,7 +67,7 @@
 </div>
 
 <div id="poke-box">
-    <section id="poke-section" class="box view-style" th:each="pokemon: ${pokelist}">
+    <section id="poke-section" class="box view-style" th:each="pokemon: ${monlist}">
         <a th:href="@{/pokemon_detail_view/{id}(id=${pokemon.id})}" id="poke-anchor">
             <img src="/images/pokehostlogo.jpeg">
             <p>Name:  <span th:text="${pokemon.name}"></span></p>
@@ -75,6 +75,8 @@
         </a>
     </section>
 </div>
+
+
 <div id="info">
     <div id="copyright-info">
         <p class="rich-text">Pokémon is © 1995 Nintendo</p>

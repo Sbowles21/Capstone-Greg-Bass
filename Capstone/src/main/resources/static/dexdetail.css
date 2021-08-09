@@ -72,6 +72,7 @@ margin-top:2%;
     text-decoration:none;
     cursor:pointer;
 }
+/*Content*/
 #Dextitle{
     display: flex;
     justify-content: center;
@@ -87,6 +88,26 @@ margin-top:2%;
 #Appname{
     font-size: 232% !important;
     font-weight: 400 !important;
+}
+/*Pokemon*/
+#poke-box {
+    display: flex;
+}
+
+#poke-anchor {
+    color: hsl(210 2% 27%);
+    transition: color ease-in-out 0.25s;
+}
+
+#poke-anchor:hover {
+    color: hsl(229 70% 57%);
+}
+
+
+.view-style {
+    margin: 1rem 1rem 1rem 0.5rem !important;
+    width: 14rem;
+    text-align: center;
 }
 /*Bottom*/
 #info {

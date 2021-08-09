@@ -190,37 +190,6 @@ public class MainController {
         return "pokeView";
     }
 
-    @GetMapping("/hey-bass")
-    public String heyBass(){
-        return "hey-bass";
-    }
-
-
-    class A {
-        public A() {
-            names = new ArrayList<>();
-        }
-        ArrayList<String> names;
-
-        public ArrayList<String> getNames() {
-            return names;
-        }
-
-        public void setNames(ArrayList<String> names) {
-            this.names = names;
-        }
-    }
-
-    @PostMapping("/hey-bass")
-    public  String heyBass(A a){
-
-        System.out.println("hey-bass");
-        for (var name : a.names) {
-            System.out.println(name);
-        }
-        return "hey-bass";
-    }
-
     @GetMapping("/pokemon_detail_view/{id}")
     public String displayPokemonDetails(@PathVariable(required = false) Long id, Model model, RedirectAttributes redirAttrs) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -282,10 +251,7 @@ public class MainController {
             }
             model.addAttribute("pokedex", pokedex.get());
         }
-
-
-//        List<Pokemon> pokelist = pokerepo.findByDex();
-//        model.addAttribute("pokelist", pokelist);
+        model.addAttribute("monlist", pokerepo.findAll());
 
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
