@@ -24,6 +24,7 @@ background-color: var(--red-primary) !important;
 .main-nav{
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 #maincontent{
 margin: 0% 25% !important;
@@ -147,7 +148,7 @@ button.submit-btn:hover {
 
 /* Color text */
 .rich-text {
-  color: var(--rich-primary);
+  color: var(--rich-primary) !important;
   transition: color 0.3s;
 }
 

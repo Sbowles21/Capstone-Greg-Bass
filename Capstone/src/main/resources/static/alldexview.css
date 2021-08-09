@@ -31,9 +31,6 @@ span.rich-text:hover {
 .darkEB-bg {
   background-color: var(--darkEB-primary);
 }
-.homenav{
-background-color: var(--red-primary) !important;
-}
 
 body {
   background: rgb(199,199,199);
@@ -47,6 +44,10 @@ body {
 .main-nav{
     position: sticky;
     top: 0;
+}
+.homenav{
+background-color: var(--red-primary) !important;
+z-index: 2;
 }
 #maincontent{
 margin: 0% 25% !important;

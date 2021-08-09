@@ -8,7 +8,7 @@
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 </head>
 <body>
-<div class="main-nav">
+<div sec:authorize="isAuthenticated()" class="main-nav">
   <nav class="navbar homenav" role="navigation" aria-label="main navigation">
     <div class="navbar-brand navbar-start">
 
@@ -16,6 +16,16 @@
       <h1>PokeHost</h1>
     </div>
     <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable is-dark">
+        <a class="navbar-link">
+          Create
+        </a>
+        <div class="navbar-dropdown ">
+          <a th:href="@{/poke_create}" class="navbar-item">
+            Create a Pokemon
+          </a>
+        </div>
+      </div>
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-dark" href="#" th:href="@{/logout}">
@@ -26,15 +36,14 @@
     </div>
   </nav>
 </div>
-
 <div id="poke-box">
-  <form th:action="@{/process_adding/{id}(id = ${pokedex.id})}" method="post">
-    <section id="poke-section" class="box view-style" th:each="pokemon: ${monlist}"  th:object="${pokedex}">
+  <form th:action="@{/process_adding}" method="post">
+    <section id="poke-section" class="box view-style" th:each="pokemon: ${monlist}">
         <img src="/images/pokehostlogo.jpeg">
         <p>Name:  <span th:text="${pokemon.name}"></span></p>
         <p>types:  <span th:text="${pokemon.types}"></span></p>
         <section id="poke-config">
-          <input type="checkbox" class="check" name="pokemon" th:value="${pokemon.id}" th:field="*{pokemonSet}">
+          <input type="checkbox" class="check" name="pokemon" th:value="${pokemon.id}">
       </section>
     </section>
       <div id = "submit">
@@ -42,15 +51,16 @@
       </div>
   </form>
 </div>
-
-<div id="info">
+<div class="info">
   <div id="copyright-info">
     <p class="rich-text">Pokémon is © 1995 Nintendo</p>
   </div>
   <div id="contact-info">
-    <a href="#" class= "rich-text plain-link spaced-sides" target="_blank">contact us</a>
-    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
+    <a href="#" class="rich-text plain-link spaced-sides" target="_blank">contact us</a>
+    <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides"
+       target="_blank">discord</a>
   </div>
 </div>
+<script src="modal.js"></script>
 </body>
 </html>
