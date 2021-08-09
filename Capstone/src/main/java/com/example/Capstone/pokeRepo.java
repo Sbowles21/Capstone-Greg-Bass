@@ -13,6 +13,6 @@ public interface pokeRepo extends JpaRepository<Pokemon, Long>, CrudRepository<P
 
     @Query("SELECT p FROM Pokemon p where p.id = ?1")
     public Pokemon findMonById(Long id);
-    
+
 }
 

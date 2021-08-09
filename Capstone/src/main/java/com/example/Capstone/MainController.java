@@ -81,7 +81,7 @@ public class MainController {
     @GetMapping("/users")
     public String users(Model model) {
         model.addAttribute("userlist", userRepo.findAll());
-
+        model.addAttribute("dex", new Pokedex());
         return "userView";
     }
 
@@ -184,7 +184,7 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails customUser = (CustomUserDetails) auth.getPrincipal();
         Long creatorId = customUser.getId();
-
+        model.addAttribute("dex", new Pokedex());
         model.addAttribute("monlist", pokerepo.findMonByUserId(creatorId));
 
         return "pokeView";
@@ -202,7 +202,7 @@ public class MainController {
         } else {
             model.addAttribute("pokemon", pokerepo.findMonById(id));
         }
-
+        model.addAttribute("dex", new Pokedex());
         return "pokeDetailView";
     }
 
@@ -258,7 +258,7 @@ public class MainController {
 
         List<Pokedex> dexlist = dexrepo.findAll();
         model.addAttribute("dexlist", dexlist);
-
+        model.addAttribute("dex", new Pokedex());
         return "dexdetail";
     }
 
