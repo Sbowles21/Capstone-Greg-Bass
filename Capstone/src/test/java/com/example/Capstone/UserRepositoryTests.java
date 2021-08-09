@@ -48,7 +48,6 @@ public class UserRepositoryTests {
         user.setCollabs(1L);
         user.setPokedex(2L);
         user.setPokemon(3L);
-        user.setLikedPokemon(poke_Set);
 
         User saveUser = repository.save(user);
 

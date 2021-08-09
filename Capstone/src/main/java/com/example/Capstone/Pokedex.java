@@ -56,25 +56,6 @@ public class Pokedex {
         this.creator = creator;
     }
 
-    public Set<Pokemon> getpokemon() {
-        return pokemonSet;
-    }
-
-    public void setpokemon(Set<Pokemon> pokemon) {
-        this.pokemonSet = pokemon;
-    }
-    public String getAccess() {
-        return access;
-    }
-
-    public void setAccess(String access) {
-        this.access = access;
-    }
-    public void addpokemon(Pokemon pokemon) {
-        this.pokemonSet.add(pokemon);
-
-    }
-
     public Set<Pokemon> getPokemonSet() {
         return pokemonSet;
     }
@@ -82,4 +63,13 @@ public class Pokedex {
     public void setPokemonSet(Set<Pokemon> pokemonSet) {
         this.pokemonSet = pokemonSet;
     }
+
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
+    }
+
 }

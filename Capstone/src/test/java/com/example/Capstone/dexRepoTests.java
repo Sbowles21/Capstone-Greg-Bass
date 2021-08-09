@@ -45,15 +45,13 @@ public class dexRepoTests {
         pokeman.add(pokemon4);
 
 
-        User creator =  userRepo.findByUserId(1L);
-
+        User creator =  userRepo.findByUserId(8L);
         Pokedex dex = new Pokedex();
         dex.setDexname("default");
         dex.setCreator(creator);
+        dex.setPokemonSet(pokeman);
 
 
         dex.setAccess("private");
-
-        dexrepo.save(dex);
     }
 }
