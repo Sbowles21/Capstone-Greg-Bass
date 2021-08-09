@@ -21,7 +21,7 @@ public class Pokedex {
 
     @ManyToMany
     @JoinTable(
-            name = "dexes_in",
+            name = "DexesIn",
             joinColumns = @JoinColumn(name = "dex_id"),
             inverseJoinColumns = @JoinColumn(name = "poke_id")
     )
@@ -29,6 +29,8 @@ public class Pokedex {
 
     @Column
     String access;
+
+
 
     public Long getId() {
         return id;
