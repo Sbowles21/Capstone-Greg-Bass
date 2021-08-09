@@ -32,9 +32,9 @@ span.rich-text:hover {
   background-color: var(--darkEB-primary);
 }
 
-body {
-  background: rgb(199,199,199);
-  background: linear-gradient(0deg, rgba(199,199,199,1) 0%, rgba(255,255,255,1) 100%);
+html, body {
+  background: rgb(199,199,199) !important;
+  background: linear-gradient(0deg, rgba(199,199,199,1) 0%, rgba(255,255,255,1) 100%) !important;
   color:black;
   margin: 0px;
   padding: 0px;

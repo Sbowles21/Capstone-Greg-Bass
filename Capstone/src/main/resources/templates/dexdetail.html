@@ -11,24 +11,41 @@
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <h1 id="Appname">PokeHost</h1>
+            <a th:href="@{/}" id="title">
+                <h1 class="rich-text" id="Appname">PokeHost</h1>
+            </a>
         </div>
-        <div sec:authorize="!isAuthenticated()">
+        <div>
             <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-dark" th:href="@{/signup}">
-                            Sign up
+                <div class="navbar-item has-dropdown is-hoverable is-dark">
+                    <a class="navbar-link rich-text">
+                        Create
+                    </a>
+                    <div class="navbar-dropdown ">
+                        <a class="navbar-link" onclick="modallever()">
+                            Create a Dex
                         </a>
-                        <a class="button is-dark" th:href="@{/login}">
-                            Log in
+                        <a th:href="@{/poke_create}" class="navbar-item">
+                            Create a Pokemon
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable is-dark">
+                    <a class="navbar-link rich-text">
+                        View
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" th:href="@{/users}">
+                            Users
+                        </a>
+                        <a class="navbar-item" th:href="@{/dex_main_view}">
+                            View all Pokédex
+                        </a>
+                        <a class="navbar-item" th:href="@{/pokemon_view}">
+                            View your Pokémon
+                        </a>
+                    </div>
+                </div>
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-dark" href="#" th:href="@{/logout}">
@@ -67,5 +84,6 @@
         <a href="https://discord.gg/ekX6qfHkEK" class="rich-text plain-link spaced-sides" target="_blank">discord</a>
     </div>
 </div>
+<script src="modal.js"></script>
 </body>
 </html>

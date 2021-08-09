@@ -32,9 +32,9 @@ span.rich-text:hover {
   background-color: var(--darkEB-primary);
 }
 
-body {
-  background: rgb(199,199,199);
-  background: linear-gradient(0deg, rgba(199,199,199,1) 0%, rgba(255,255,255,1) 100%);
+html, body {
+  background: rgb(199,199,199) !important;
+  background: linear-gradient(0deg, rgba(199,199,199,1) 0%, rgba(255,255,255,1) 100%) !important;
   color:black;
   margin: 0px;
   padding: 0px;
@@ -51,6 +51,12 @@ z-index: 2;
 }
 #maincontent{
 margin: 0% 25% !important;
+}
+#dex-div {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .custombox{
 background-color: rgb(234 234 234 / 29%) !important;

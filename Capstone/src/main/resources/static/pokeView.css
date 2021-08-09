@@ -6,7 +6,7 @@
 }
 /* Color text */
 .rich-text {
-  color: var(--rich-primary);
+  color: var(--rich-primary) !important;
   transition: color 0.3s;
 }
 a.rich-text:hover {
@@ -32,8 +32,8 @@ span.rich-text:hover {
   background-color: var(--darkEB-primary);
 }
 
-body {
-  background-color: rgb(243 243 243);
+html, body {
+  background-color: rgb(243 243 243) !important;
   color:black;
   margin: 0px;
   padding: 0px;

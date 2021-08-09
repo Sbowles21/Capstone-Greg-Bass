@@ -11,26 +11,12 @@
     <nav class="navbar homenav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand navbar-start">
             <img th:src="@{/images/pokehostlogo.jpeg}" width="53">
-            <h1>PokeHost</h1>
-        </div>
-        <div sec:authorize="!isAuthenticated()">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-dark" th:href="@{/signup}">
-                            Sign up
-                        </a>
-                        <a class="button is-dark" th:href="@{/login}">
-                            Log in
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <h1 class="rich-text">PokeHost</h1>
         </div>
         <div sec:authorize="isAuthenticated()">
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable is-dark">
-                    <a class="navbar-link">
+                    <a class="navbar-link rich-text">
                         Create
                     </a>
                     <div class="navbar-dropdown ">
@@ -70,10 +56,11 @@
     </nav>
 </div>
 <div>
-    <h1>All Dexes</h1>
+
 </div>
 
-<div>
+<div id="dex-div">
+    <h1 class="rich-text">All Dexes</h1>
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
         <tr>
@@ -86,7 +73,7 @@
         <tr th:each="pokedex: ${dexlist}">
             <td th:text="${pokedex.dexname}">Name</td>
             <td th:text="${pokedex.creator.userName}">creator</td>
-            <td><a th:href="@{/dex_detail/{id}(id=${pokedex.id})} ">
+            <td><a th:href="@{/dex_detail/{id}(id=${pokedex.id})}">
                 view details
             </a>
             </td>

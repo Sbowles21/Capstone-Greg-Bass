@@ -31,7 +31,6 @@ public class Pokedex {
     String access;
 
 
-
     public Long getId() {
         return id;
     }
