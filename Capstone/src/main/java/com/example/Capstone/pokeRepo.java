@@ -13,11 +13,6 @@ public interface pokeRepo extends JpaRepository<Pokemon, Long>, CrudRepository<P
 
     @Query("SELECT p FROM Pokemon p where p.id = ?1")
     public Pokemon findMonById(Long id);
-
-//    @Query("SELECT p FROM Pokemon p, DexesIn poke, Pokedex d WHERE poke.pokeid = p.id and poke.dex_id = d.id")
-//    @Query("SELECT p from Pokemon p, Pokedex d, DexesIn poke  WHERE poke.poke_id = p.id")
-//    @Query("SELECT p FROM Pokemon p, Pokedex d, DexesIn di WHERE di.poke_id = p.id AND di.dex_id = d.id")
-//    public List<Pokemon> findByDex();
-
+    
 }
 
