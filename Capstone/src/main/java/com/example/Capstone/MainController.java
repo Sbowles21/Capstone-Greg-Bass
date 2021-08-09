@@ -283,6 +283,10 @@ public class MainController {
             model.addAttribute("pokedex", pokedex.get());
         }
 
+
+//        List<Pokemon> pokelist = pokerepo.findByDex();
+//        model.addAttribute("pokelist", pokelist);
+
         List<User> listUsers = userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
 
