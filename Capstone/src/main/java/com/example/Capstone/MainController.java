@@ -15,9 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -266,6 +264,9 @@ public class MainController {
 
         List<Pokedex> dexlist = dexrepo.findAll();
         model.addAttribute("dexlist", dexlist);
+
+        model.addAttribute("dex", new Pokedex());
+
         return "dexmainview";
     }
 
@@ -300,26 +301,29 @@ public class MainController {
         return "pokeSelect";
     }
 
-    @PostMapping("/process_adding")
-    public String process_adding(@PathVariable Long id,@Valid Pokedex dex,
-                                 BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            dex.setId(id);
-            return "pokeSelect";
-        }
 
-        Optional<Pokedex> existingPokedexOptional = dexrepo.findById(dex.getId());
+
+    @PostMapping("/process_adding/{id}")
+    public String process_adding( Model model,@Valid Pokedex pokedex) {
+        Optional<Pokedex> existingPokedexOptional = dexrepo.findById(pokedex.getId());
         if (existingPokedexOptional.isEmpty()) {
-            return "pokeSelect";
+            return "dex_main_view";
         }
 
+        Set<Pokemon> pokemon = new HashSet<>();
 
-//        Pokedex existingPokedex = existingPokedexOptional.get();
-//        existingPokedex.setpokemon(existingPokedex.getpokemon());
-//
-//
-//        System.out.println(dex.access);
-//        dexrepo.save(existingPokedex);
-        return "redirect:/dexdetail";
+
+        for (var poke : pokedex.pokemonSet) {
+            System.out.println(poke);
+            pokemon.add(poke);
+        }
+
+        Pokedex existingPokedex= existingPokedexOptional.get();
+        existingPokedex.setPokemonSet(pokemon);
+
+
+        System.out.println(pokemon);
+        dexrepo.save(existingPokedex);
+        return "redirect:/dex_main_view";
     }
 }
