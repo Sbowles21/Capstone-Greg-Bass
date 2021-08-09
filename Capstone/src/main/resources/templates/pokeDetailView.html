@@ -62,7 +62,7 @@
 <div id="poke-box" class="tile is-ancestor">
     <section id="poke-section" class="tile is-parent is-12 is-vertical" th:object="${pokemon}">
         <div class="tile is-child is-8 box">
-            <p id="name" class="title details"><span th:text="${pokemon.name}"></span></p>
+            <p id="poke-name" class="title details"><span th:text="${pokemon.name}"></span></p>
             <p id="entry" class="details"><span th:text="${pokemon.entry}"></span></p>
             <p id="height" class="details">Height: <span th:text="${pokemon.Height}"></span></p>
             <p id="weight" class="details">Weight: <span th:text="${pokemon.Weight}"></span></p>

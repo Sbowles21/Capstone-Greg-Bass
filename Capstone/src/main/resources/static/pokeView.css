@@ -44,11 +44,11 @@ textarea {
 /*Navbar*/
 .homenav{
 background-color: var(--red-primary) !important;
-z-index: 2;
 }
 .main-nav{
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 .logo{
 margin-top:2%;
@@ -56,16 +56,6 @@ margin-top:2%;
 h1{
     font-size: 232% !important;
     font-weight: 400 !important;
-}
-#title {
-    color: inherit !important;
-    text-decoration: none;
-}
-
-#title:hover {
-    color:inherit;
-    text-decoration:none;
-    cursor:pointer;
 }
 
 /* Pokémon */

@@ -1,17 +1,3 @@
-/*
-.ruby {
-  background-color: hsl(357, 77%, 36%);
-}
-
-
-.rich {
-  background-color:  rgb(1, 2, 3);
-}
-
-.dark-eb{
-  background-color:  rgb(83, 104, 126);
-}
-*/
 :root {
   --text-primary: hsl(210, 20%, 2%);
   --red-primary: hsl(357, 77%, 48%);
@@ -24,8 +10,6 @@ html, body {
   margin: 0px;
   padding: 0px;
 }
-
-
 
 /* main {
    margin-left: 1rem;
@@ -77,15 +61,14 @@ span.rich-text:hover {
   background-color: var(--darkEB-primary);
 }
 
-
 /*NavBar*/
 .homenav{
 background-color: var(--red-primary) !important;
-z-index: 2;
 }
 .main-nav{
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 .logo{
 margin-top:2%;

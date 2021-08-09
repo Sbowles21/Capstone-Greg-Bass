@@ -44,10 +44,10 @@ html, body {
 .main-nav{
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 .homenav{
 background-color: var(--red-primary) !important;
-z-index: 2;
 }
 #maincontent{
 margin: 0% 25% !important;
