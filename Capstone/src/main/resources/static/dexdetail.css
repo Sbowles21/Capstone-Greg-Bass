@@ -92,6 +92,8 @@ margin-top:2%;
 /*Pokemon*/
 #poke-box {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 #poke-anchor {
@@ -103,6 +105,11 @@ margin-top:2%;
     color: hsl(229 70% 57%);
 }
 
+#poke-config {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0.5rem 0rem 0rem 0rem;
+}
 
 .view-style {
     margin: 1rem 1rem 1rem 0.5rem !important;
