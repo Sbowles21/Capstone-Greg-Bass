@@ -55,7 +55,7 @@ public class MainController {
 
         userRepo.save(user);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PostMapping("/authenticate")
@@ -66,7 +66,7 @@ public class MainController {
 
         userRepo.save(user);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -270,8 +270,6 @@ public class MainController {
         model.addAttribute("pokedex", pokedex);
         return "pokeSelect";
     }
-
-
 
     @PostMapping("/process_adding/{id}")
     public String process_adding( Model model,@Valid Pokedex pokedex) {

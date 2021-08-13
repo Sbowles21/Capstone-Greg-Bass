@@ -11,14 +11,14 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "A pokemon needs a name.")
     String Name;
 
     @Column(nullable = true)
     int DexNum;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT", unique = true)
     @NotBlank(message = "What is a Pokémon without an entry?")
     String Entry;
 
